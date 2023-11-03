@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import axios from 'axios'
 export default function Login() {
     const [data, setData] = useState({
         email: '',
@@ -7,6 +7,8 @@ export default function Login() {
     })
     const loginUser = (e) => {
         e.preventDefault()
+
+        axios.get('/')
     }
 
 

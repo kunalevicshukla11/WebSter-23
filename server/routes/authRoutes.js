@@ -1,22 +1,18 @@
-const express = require('express')
+import express from "express";
+
+import {
+  RegisterStudent,
+  RegisterAdmin,
+  LoginStudent,
+  LoginAdmin,
+} from "../controllers/authController.js";
 
 const router = express.Router();
 
-const cors = require('cors')
-const { test, registerUser, loginUser ,getProfile} = require('../controllers/authController')
+router.post("/register-student", RegisterStudent);
+router.post("/register-admin", RegisterAdmin);
 
-// middlewares
+router.post("/login-student", LoginStudent);
+router.post("/login-Admin", LoginAdmin);
 
-router.use(
-    cors({
-        credentials: true,
-        origin: 'http://localhost:3000'
-    })
-)
-
-router.get('/', test)
-router.post('/register', registerUser)
-router.post('/login', loginUser)
-router.get('/profile',getProfile)
-
-module.exports = router
+export default router;

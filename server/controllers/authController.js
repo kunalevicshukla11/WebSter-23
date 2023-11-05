@@ -1,109 +1,186 @@
-const User = require('../models/User')
-const { hashPassword, comparePassword } = require('../helper/auth')
-const jwt = require('jsonwebtoken');
+import { studentModel as Student } from "../models/StudentModel.js";
+import { adminModel as Admin } from "../models/AdminModel.js";
 
+//register Student
+const RegisterStudent = async (req, res, next) => {
+  const { name, email, password, registrationNo, branch } = req.body;
 
-const test = (req, res) => {
-    res.json('test is working')
-}
+  if (!name) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the name",
+    });
+  }
+  if (!email) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the Email",
+    });
+  }
+  if (!password) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the password",
+    });
+  }
+  if (!registrationNo) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the registrationNo",
+    });
+  }
+  if (!branch) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the branch",
+    });
+  }
 
-const registerUser = async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
+  const student = await Student.findOne({ email });
 
-        if (!name) {
-            return res.json({
-                error: 'name is required'
-            })
-        }
+  if (student) {
+    return res.status(400).json({
+      success: false,
+      message: "Student Already exist",
+    });
+  }
 
-        if (!password || password.length < 6) {
-            return res.json({
-                error: 'password is required and should be 6 characters'
-            })
-        }
+  const newStudent = await Student.create({
+    name,
+    email,
+    password,
+    registrationNo,
+    branch,
+  });
+  res.status(200).json({
+    success: true,
+    message: "Student Registered Successfully!",
+    newStudent,
+  });
+};
 
-        const exist = await User.findOne({ email })
+//Register Admin
+const RegisterAdmin = async (req, res, next) => {
+  const { name, email, password, HostelID, HostelName } = req.body;
 
-        if (exist) {
-            return res.json({
-                error: 'email is taken'
-            })
-        }
+  if (!name) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the name",
+    });
+  }
+  if (!email) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the Email",
+    });
+  }
+  if (!password) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the password",
+    });
+  }
+  if (!HostelID) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the HostelID",
+    });
+  }
+  if (!HostelName) {
+    return res.status(400).json({
+      success: false,
+      message: "Enter the HostelName",
+    });
+  }
 
-        const hashedPassword = await hashPassword(password)
+  const admin = await Admin.findOne({ email });
 
-        const user = await User.create({
-            name,
-            email,
-            password: hashedPassword,
-        })
+  if (admin) {
+    return res.status(400).json({
+      success: false,
+      message: "Admin Already exist",
+    });
+  }
 
-        return res.json(user)
-    }
-    catch (error) {
-        console.log(error)
-    }
-}
+  const newAdmin = await Admin.create({
+    name,
+    email,
+    password,
+    HostelID,
+    HostelName,
+  });
+  res.status(200).json({
+    success: true,
+    message: "new Admin Registered Successfully!",
+    newAdmin,
+  });
+};
 
+//Login for Student..
 
-const loginUser = async (req, res) => {
-    try {
-        const { email, password } = req.body;
+const LoginStudent = async (req, res, next) => {
+  const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
+  if (!email || !password) {
+    return res.status(401).json({
+      success: false,
+      message: "Enter all fields",
+    });
+  }
 
-        if (!user) {
-            return res.json({
-                error: 'No user found'
-            })
-        }
+  const user = await Student.findOne({ email });
+  if (!user) {
+    return res.status(400).json({
+      success: false,
+      message: "User Not found!",
+    });
+  }
 
-        const match = await comparePassword(password, user.password)
+  if (password === user.password) {
+    res.status(200).json({
+      success: true,
+      message: "Login Successfull! Redirecting",
+    });
+  } else {
+    return res.status(401).json({
+      success: false,
+      message: "Incorrect Password",
+    });
+  }
+};
 
-        if (match) {
-            // res.json('password match')
-            jwt.sign({email: user.email , id: user._id , name: user.name}, process.env.JWT_SECRET , {} , (err,token)=>{
-                if(err) throw err;
-                res.cookie('token',token).json(user)
-            })
-        }
+//Login for Admin..
 
-        if (!match) {
-            res.json({
-                error: 'passwords do not match'
-            })
-        }
-    }
-    catch (error) {
-        console.log(error)
-    }
-}
+const LoginAdmin = async (req, res, next) => {
+  const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(401).json({
+      success: false,
+      message: "Enter all fields",
+    });
+  }
 
-const getProfile = (req,res)=>{
-    const {token} = req.cookies
+  const user = await Admin.findOne({ email });
+  if (!user) {
+    return res.status(400).json({
+      success: false,
+      message: "User Not found!",
+    });
+  }
 
-    if(token){
-        jwt.verify(token,process.env.JWT_SECRET,{},(err,user)=>{
-            if(err) throw err;
-            res.json(user);
-        })
-    }
+  if (password === user.password) {
+    res.status(200).json({
+      success: true,
+      message: "Login Successfull! Redirecting",
+    });
+  } else {
+    return res.status(401).json({
+      success: false,
+      message: "Incorrect Password",
+    });
+  }
+};
 
-    else{
-        res.json(null)
-    }
-
-
-}
-
-
-
-
-module.exports = {
-    test,
-    registerUser,
-    loginUser,
-    getProfile
-}
+export { RegisterStudent, RegisterAdmin, LoginStudent, LoginAdmin };

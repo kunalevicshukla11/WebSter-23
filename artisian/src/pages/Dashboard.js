@@ -1,17 +1,14 @@
-import React from 'react'
-import { useContext } from 'react'
-import { UserContext } from '../context/userContext'
+import React from "react";
+import Layout from "../components/Layout";
 
-
-export default function Dashboard() {
-
-    const {user} = useContext(UserContext)
-
-
+const Dashboard = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      {!!user && (<h2>hi {user.name}! </h2>)}
-    </div>
-  )
-}
+    <Layout>
+      <div className="DashboardContainer">
+        <h1>Dashboard Page, It will contain all the listed Hostels</h1>
+      </div>
+    </Layout>
+  );
+};
+
+export default Dashboard;

@@ -1,6 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
-import colors from "colors";
+import mongoose from "mongoose";import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";

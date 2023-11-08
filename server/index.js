@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import customErrorHandler from "./error/errorHandler.js";
 
 //configure env
 dotenv.config();
@@ -42,6 +43,8 @@ app.get("/", (req, res) => {
     message: "welcome to Webster'2k23 app",
   });
 });
+
+app.use(customErrorHandler);
 
 const PORT = process.env.PORT;
 //listening the app

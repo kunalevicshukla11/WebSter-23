@@ -24,6 +24,8 @@ const Login = () => {
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/dashboard");
+      } else {
+        navigate("/");
       }
     } catch (error) {
       const msg = error.response.data.message;

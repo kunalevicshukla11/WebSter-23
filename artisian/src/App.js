@@ -6,10 +6,11 @@ import RegisterUser from "./pages/User/Register";
 import LoginUser from "./pages/User/Login";
 import RegisterAdmin from "./pages/Admin/Register";
 import LoginAdmin from "./pages/Admin/Login";
-import Tandon from "./Hostels/Tandon"
-import Tilak from "./Hostels/Tilak"
-import Malviya from "./Hostels/Malviya"
-import Patel from "./Hostels/Patel"
+import Tandon from "./Hostels/Tandon";
+import Tilak from "./Hostels/Tilak";
+import Malviya from "./Hostels/Malviya";
+import Patel from "./Hostels/Patel";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/dashboard/tilak" element={<Tilak />} />
         <Route path="/dashboard/malviya" element={<Malviya />} />
         <Route path="/dashboard/patel" element={<Patel />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import customErrorHandler from "./error/errorHandler.js";
+import compRoutes from "./routes/complaintRoutes.js";
 
 //configure env
 dotenv.config();
@@ -37,7 +38,8 @@ connectDB();
 
 //user-admin route...
 app.use("/api/v1/auth", authRoutes);
-
+//compliant..
+app.use("/api/v1/comp", compRoutes);
 app.get("/", (req, res) => {
   res.send({
     message: "welcome to Webster'2k23 app",

@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import Footer from "../../components/Footer";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -25,7 +24,7 @@ const Register = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/dashboard");
+        navigate("/login-admin");
       }
     } catch (error) {
       const msg = error.response.data.message;
@@ -96,10 +95,8 @@ const Register = () => {
             </form>
           </div>
         </div>
-
       </div>
-      <Footer />
-    </>
+     </>
   );
 };
 

@@ -27,7 +27,7 @@ const Register = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/dashboard");
+        navigate("/login-student");
       }
     } catch (error) {
       const msg = error.response.data.message;

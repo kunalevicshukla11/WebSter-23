@@ -5,10 +5,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import { useAuth } from "../../context/userContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
 
@@ -22,6 +24,12 @@ const Login = () => {
       );
 
       if (res.data.success) {
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
         toast.success(res.data.message);
         navigate("/dashboard");
       } else {

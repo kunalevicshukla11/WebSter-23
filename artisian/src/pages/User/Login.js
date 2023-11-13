@@ -57,7 +57,7 @@ const Login = () => {
             <div className="flex flex-col py-4 px-2">
               <lable className="text-2xl pb-2">Email</lable>
               <input
-                className="w-full h-[30px] bg-gray-400 text-black"
+                className="w-full h-[40px] pl-1 bg-gray-400 text-black"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -70,7 +70,7 @@ const Login = () => {
             <div className="flex flex-col py-4 px-2">
               <lable className="text-2xl ">Password</lable>
               <input
-                className="w-full h-[25px] bg-gray-400 text-black"
+                className="w-full pl-1 h-[25px] text-3xl bg-gray-400 text-black"
                 type="password"
                 name="password"
                 size={30}

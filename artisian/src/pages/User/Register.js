@@ -37,6 +37,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <div className="containerRUser">
       <div className="cardRUser">
         <div className="card_titleRUser">
@@ -97,8 +98,12 @@ const Register = () => {
           </form>
         </div>
       </div>
-      <Footer></Footer>
+      
+      
     </div>
+    <Footer/>
+    </>
+    
   );
 };
 

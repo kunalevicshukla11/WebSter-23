@@ -74,7 +74,7 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink
                   className="hover:opacity-50 font-mono text-center "
-                  to="/"
+                  to="/contact"
                 >
                   Contact Us
                 </NavLink>

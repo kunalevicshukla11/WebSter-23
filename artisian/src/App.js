@@ -11,6 +11,7 @@ import Tilak from "./Hostels/Tilak";
 import Malviya from "./Hostels/Malviya";
 import Patel from "./Hostels/Patel";
 import NotFound from "./components/NotFound";
+import Contact from "./pages/Contact"
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="/dashboard/tilak" element={<Tilak />} />
         <Route path="/dashboard/malviya" element={<Malviya />} />
         <Route path="/dashboard/patel" element={<Patel />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

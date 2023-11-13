@@ -44,6 +44,7 @@ const Login = () => {
   };
 
   return (
+    <>
     <div className="containerLUser">
       <div className="cardLUser">
         <div className="card_titleLUser">
@@ -77,6 +78,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

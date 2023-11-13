@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Landing() {
   return (
@@ -12,6 +13,7 @@ export default function Landing() {
           alt="background-image"
         />
       </div>
+      <Footer></Footer>
     </>
   );
 }

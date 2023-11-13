@@ -42,7 +42,7 @@ export default function Navbar() {
         </NavLink>
 
         <ul
-          className="hidden md:flex md:space-x-16 md:text-xl md:mr-8 md:mt-[70px] relative"
+          className="hidden md:flex md:space-x-16 md:text-xl md:mr-8 md:mt-[30px] relative"
           onMouseLeave={handleMouseLeave}
         >
           <li
@@ -71,11 +71,11 @@ export default function Navbar() {
             )}
           </li>
           <li
-            className="hover:bg-gray-700  mt-[80px] p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-gray-300 border-gray-900 "
+            className="hover:bg-gray-700 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-gray-300 border-gray-900 "
             onMouseEnter={() => handleMouseEnter("student")}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLink className="hover:opacity-50 hover:top-0" to="/">
+            <NavLink className="hover:opacity-50" to="/">
               Student
             </NavLink>
             {showStudentDropdown && (

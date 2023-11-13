@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap");
+
+
+.cardComp {
+    background-color:rgb(11, 115, 133);
+    border-radius: 30px;
+    text-align: center;
+    padding: 15px;
+    max-width: 375px;
+    margin: 100px auto;
+    /* box-shadow: 20px 20px 20px rgba(236, 239, 241, 0.98),
+                -20px -20px 20px rgba(255, 255, 255, 0.98); */
+}
+
+.cardComp .ilustration {
+    margin: 30px;
+}
+
+
+.cardComp .Comph3 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    color: #78909c;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.cardComp .Compp {
+    font-family: "Fredoka", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    color: #90a4ae;
+    margin: 30px auto;
+    max-width: 80%;
+}
+
+.cardComp .CompB {
+    font-family: "Fredoka", sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px 80px;
+    border-radius: 25px;
+    color: white;
+    border: 0;
+    margin: 30px 0;
+    outline: none;
+    background-color: #81c7c0;
+    box-shadow: 10px 10px 10px rgba(169, 204, 172, 0.2), -10px -10px 10px rgba(169, 204, 172, 0.2);
+    transition: ease all 0.3s;
+    cursor: pointer;
+}
+
+.cardComp .CompB:hover {
+    box-shadow: 20px 20px 20px rgba(169, 204, 172, 0.1), -20px -20px 20px rgba(169, 204, 172, 0.1);
+    transform: translateY(-3px);
+}
+
+.cardComp .CompB:active {
+    transform: scale(0.9);
+    box-shadow: inset -1px -1px 3px rgba(169, 204, 172, 0.3), -20px -20px 20px rgba(255, 255, 255, 0);
+}

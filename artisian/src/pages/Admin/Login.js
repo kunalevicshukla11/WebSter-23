@@ -45,39 +45,40 @@ const Login = () => {
 
   return (
     <>
-    <div className="containerLUser">
-      <div className="cardLUser">
-        <div className="card_titleLUser">
-          <h1>Admin Login</h1>
-          <span>
-            Don't have an account? <NavLink to="/signup-admin">SignUp</NavLink>
-          </span>
-        </div>
-        <div className="form formLUser">
-          <form action="/Login" method="post" onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button>Login</button>
-          </form>
+      <div className="containerLUser">
+        <div className="cardLUser">
+          <div className="card_titleLUser">
+            <h1>Admin Login</h1>
+            <span>
+              Don't have an account?{" "}
+              <NavLink to="/signup-admin">SignUp</NavLink>
+            </span>
+          </div>
+          <div className="form formLUser">
+            <form action="/Login" method="post" onSubmit={handleSubmit}>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button>Login</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

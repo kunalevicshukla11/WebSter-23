@@ -8,6 +8,7 @@ const ColorModeSwitcher = (props) => {
 
   return (
     <IconButton
+      className="bg-gray-400"
       variant="ghost"
       color="current"
       pos={"fixed"}

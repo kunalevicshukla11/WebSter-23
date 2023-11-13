@@ -1,14 +1,17 @@
 import React from "react";
-import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
 
-const Landing = () => {
+export default function Landing() {
   return (
-    <Layout>
-      <div>
-        <h1>Landing Page</h1>
+    <>
+      <div className="">
+        <Navbar className="" />
+        <img
+          className="h-screen m-0 p-0 bg-center bg-fixed bg-cover bg-no-repeat object-cover object-center"
+          src="/images/backg.png"
+          alt="background-image"
+        />
       </div>
-    </Layout>
+    </>
   );
-};
-
-export default Landing;
+}

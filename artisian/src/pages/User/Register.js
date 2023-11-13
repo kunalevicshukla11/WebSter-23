@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Footer from "../../components/Footer";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -96,6 +97,7 @@ const Register = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

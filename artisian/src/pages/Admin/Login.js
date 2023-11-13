@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "../../CSS/LoginUser.css";
+import Footer from "../../components/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -68,6 +69,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

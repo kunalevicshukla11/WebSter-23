@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import "../../CSS/LoginUser.css";
+import Footer from "../../components/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -38,12 +38,12 @@ const Login = () => {
     <>
       <div className="flex items-center justify-center min-h-screen">
         <img
-          className="h-screen w-screen object-cover mix-blend-overlay"
+          className="h-screen w-screen object-cover"
           src="/images/dark2.png"
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-60 text-gray-300 opacity-60">
+        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black  text-gray-300 opacity-60">
           <div className="text-center">
             <h1 className="text-3xl">Student Login</h1>
             <span className="  text-[17px]">
@@ -57,7 +57,7 @@ const Login = () => {
             <div className="flex flex-col py-4 px-2">
               <lable className="text-2xl pb-2">Email</lable>
               <input
-                className="w-full h-[40px] pl-1 bg-gray-400 text-black"
+                className="w-full h-[40px] pl-1 bg-white text-black"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -70,7 +70,7 @@ const Login = () => {
             <div className="flex flex-col py-4 px-2">
               <lable className="text-2xl ">Password</lable>
               <input
-                className="w-full pl-1 h-[25px] text-3xl bg-gray-400 text-black"
+                className="w-full pl-1 h-[30px] bg-white text-black"
                 type="password"
                 name="password"
                 size={30}
@@ -94,6 +94,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

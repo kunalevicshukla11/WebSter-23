@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
     <Router>
-      <ColorModeScript />
-      <ChakraProvider theme={theme}>
-        <ColorModeSwitcher />
-        <App />
-      </ChakraProvider>
+      {/* <ColorModeScript /> */}
+      {/* <ChakraProvider theme={theme}> */}
+      {/* <ColorModeSwitcher /> */}
+      <App />
+      {/* </ChakraProvider> */}
     </Router>
   </AuthProvider>
 );

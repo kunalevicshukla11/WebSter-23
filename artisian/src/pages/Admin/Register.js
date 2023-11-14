@@ -44,7 +44,7 @@ const Register = () => {
               <NavLink to="/login-admin">Sign In</NavLink>
             </span>
           </div>
-          <div className="form formRUser">
+          <div className="formRUser">
             <form action="/register" method="post" onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -96,7 +96,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-     </>
+    </>
   );
 };
 

@@ -14,12 +14,12 @@ import React from "react";
 const Sidebar = () => {
   {
     return (
-      <Box pt={28} position="relative" h="100vh">
+      <Box pt={128} position="relative" h="100vh">
         <Accordion defaultIndex={[0]} allowMultiple="true" allowToggle>
-          <AccordionItem mr={50} mt={5}>
+          <AccordionItem mr={50} pb={4}>
             <h2>
-              <AccordionButton _expanded={{ bg: "teal.800", color: "white" }}>
-                <Box flex="1" textAlign="left">
+              <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
+                <Box flex="1" textAlign="left" ml={4}>
                   <NavLink className="text-2xl" to="/">
                     Home
                   </NavLink>
@@ -28,20 +28,20 @@ const Sidebar = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel fontWeight={"extrabold"} fontSize={20} pb={4}>
-              <Stack>
-                <NavLink className="text-slate-400" to="/">
+              <Stack ml={2}>
+                <NavLink className="text-slate-400 text-2xl" to="/">
                   About Us
                 </NavLink>
-                <NavLink className="text-slate-400" to="/">
+                <NavLink className="text-slate-400 text-2xl" to="/">
                   Contact Us
                 </NavLink>
               </Stack>
             </AccordionPanel>
           </AccordionItem>
 
-          <AccordionItem mr={50} mt={0}>
+          <AccordionItem mr={50} pb={4}>
             <h2>
-              <AccordionButton _expanded={{ bg: "teal.800", color: "white" }}>
+              <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
                 <Box flex="1" textAlign="left">
                   <NavLink className="text-2xl" to="/">
                     Student
@@ -50,12 +50,23 @@ const Sidebar = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel fontWeight={"extrabold"} fontSize={20} pb={4}>
+            <AccordionPanel
+              ml={2}
+              fontWeight={"extrabold"}
+              fontSize={20}
+              pb={4}
+            >
               <Stack>
-                <NavLink className="text-slate-400" to="/login-student">
+                <NavLink
+                  className="text-slate-400 text-2xl"
+                  to="/login-student"
+                >
                   Login
                 </NavLink>
-                <NavLink className="text-slate-400" to="/signup-student">
+                <NavLink
+                  className="text-slate-400 text-2xl"
+                  to="/signup-student"
+                >
                   Sign Up
                 </NavLink>
               </Stack>
@@ -63,7 +74,7 @@ const Sidebar = () => {
           </AccordionItem>
           <AccordionItem mr={50} mt={0}>
             <h2>
-              <AccordionButton _expanded={{ bg: "teal.800", color: "white" }}>
+              <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
                 <Box flex="1" textAlign="left">
                   <NavLink className="text-2xl" to="/">
                     Admin
@@ -72,12 +83,17 @@ const Sidebar = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} fontWeight={"extrabold"} fontSize={20}>
+            <AccordionPanel
+              pb={4}
+              ml={2}
+              fontWeight={"extrabold"}
+              fontSize={20}
+            >
               <Stack>
-                <NavLink className="text-slate-400" to="/login-admin">
+                <NavLink className="text-slate-400 text-2xl" to="/login-admin">
                   Login
                 </NavLink>
-                <NavLink className="text-slate-400" to="/signup-admin">
+                <NavLink className="text-slate-400 text-2xl" to="/signup-admin">
                   Sign Up
                 </NavLink>
               </Stack>

@@ -40,14 +40,16 @@ const Register = () => {
     <>
       <div className="flex items-center justify-center min-h-screen">
         <img
-          className="h-screen w-screen object-cover "
+          className="h-screen w-screen object-cover"
           src="/images/dark2.png"
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[470px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-white opacity-60">
+        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-80">
           <div className="text-center">
-            <h1 className="text-3xl">Create Account</h1>
+            <h1 className="text-3xl font-mono font-bold pb-3">
+              Create Account
+            </h1>
             <span className="  text-[17px]">
               Already have an account?{" "}
               <NavLink className="font-bold" to="/login-student">
@@ -56,9 +58,9 @@ const Register = () => {
             </span>
           </div>
           <form action="/register" method="post" onSubmit={handleSubmit}>
-            <div className="flex flex-col py-4 gap-2 px-2">
+            <div className="flex flex-col p-2 px-2">
               <input
-                className="p-2 text-lg font-mono font-bold bg-pink-950"
+                className="p-2"
                 type="text"
                 name="username"
                 id="username"
@@ -67,19 +69,22 @@ const Register = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-
+            </div>
+            <div className="flex flex-col pb-2 px-2">
               <input
-                className="p-2 text-lg font-mono font-bold bg-pink-950"
+                className="p-2"
                 type="number"
                 name="studentid"
                 id="studentid"
-                placeholder="Registration No."
+                placeholder="Registration No"
                 value={registrationNo}
                 onChange={(e) => setRegistrationNo(e.target.value)}
                 required
               />
+            </div>
+            <div className="flex flex-col px-2">
               <input
-                className="p-2 text-lg font-mono font-bold bg-pink-950"
+                className="p-2"
                 type="text"
                 name="branch"
                 id="branch"
@@ -88,9 +93,10 @@ const Register = () => {
                 onChange={(e) => setBranch(e.target.value)}
                 required
               />
-
+            </div>
+            <div className="flex flex-col px-2 pt-2">
               <input
-                className="p-1.5 text-lg font-mono font-bold bg-pink-950"
+                className="p-2 "
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -99,8 +105,11 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+            </div>
+
+            <div className="flex flex-col py-2 px-2">
               <input
-                className="w-full p-2 text-lg font-mono font-bold h-[35px] bg-pink-950 "
+                className="w-full h-[35px] p-2 bg-white text-black"
                 type="password"
                 name="password"
                 size={30}
@@ -111,21 +120,16 @@ const Register = () => {
                 required
               />
             </div>
-            <p className="flex ml-2 items-center">
-              <input className="mr-2" type="checkbox" />
-              Remember me
-            </p>
+
             <button
-              className="border-2 w-full my-5 py-4 hover:bg-zinc-950  font-bold"
+              className="border w-full my-5 py-4 hover:bg-zinc-950 font-bold"
               type="submit"
             >
-              Sign In
+              Sign Up
             </button>
           </form>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 };

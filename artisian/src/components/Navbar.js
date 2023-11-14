@@ -63,8 +63,8 @@ export default function Navbar() {
           >
             <NavLink className="hover:opacity-50" to="/user-profile">
               {name}
-            </NavLink>
-            {/* {showHomeDropdown && (
+            </NavLink>{" "}
+            {showHomeDropdown && (
               <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-700 text-white w-32 h-24 flex flex-col justify-center">
                 <NavLink
                   className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 "
@@ -79,7 +79,7 @@ export default function Navbar() {
                   Contact Us
                 </NavLink>
               </div>
-            )} */}
+            )}
           </li>
           {!auth.user ? (
             <>

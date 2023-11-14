@@ -51,38 +51,41 @@ const Login = () => {
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black  text-gray-300 opacity-60">
+        <div className="absolute w-[300px] h-[400px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-70">
           <div className="text-center">
-            <h1 className="text-3xl">Student Login</h1>
-            <span className="  text-[17px]">
+            <h1 className="text-3xl mb-2">Student Login</h1>
+            <span className=" text-[17px]">
               Don't have an account?{" "}
               <NavLink className="font-bold" to="/signup-student">
-                SignUp
+                Sign Up
               </NavLink>
             </span>
           </div>
-          <form action="/Login" method="post" onSubmit={handleSubmit}>
+          <form
+            className=""
+            action="/Login"
+            method="post"
+            onSubmit={handleSubmit}
+          >
             <div className="flex flex-col py-4 px-2">
-              <lable className="text-2xl pb-2">Email</lable>
+              <lable className="text-lg font-mono font-bold">Email</lable>
               <input
-                className="w-full h-[40px] pl-1 bg-white text-black"
+                className="w-full  p-1.5 text-white bg-gray-700"
                 type="email"
                 name="email"
-                placeholder="Email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            <div className="flex flex-col py-4 px-2">
-              <lable className="text-2xl ">Password</lable>
+            <div className="flex flex-col py-1 px-2">
+              <lable className="text-lg font-mono font-bold">Password</lable>
               <input
-                className="w-full pl-1 h-[30px] bg-white text-black"
+                className="w-full p-2 text-white bg-gray-700"
                 type="password"
                 name="password"
                 size={30}
-                placeholder="Password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -94,7 +97,7 @@ const Login = () => {
               Remember me
             </p>
             <button
-              className="border w-full my-5 py-4 hover:bg-zinc-950  font-bold"
+              className="border w-full my-5 py-3 hover:bg-zinc-950  font-bold"
               type="submit"
             >
               Login
@@ -102,7 +105,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

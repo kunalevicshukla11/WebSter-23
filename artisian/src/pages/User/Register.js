@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../CSS/RegisterStudent.css";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -27,7 +27,7 @@ const Register = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/dashboard");
+        navigate("/login-student");
       }
     } catch (error) {
       const msg = error.response.data.message;

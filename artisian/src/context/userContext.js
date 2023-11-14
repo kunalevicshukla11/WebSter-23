@@ -1,24 +1,43 @@
-import axios from 'axios';
-import {createContext ,useState , useEffect} from 'react';
+import { useContext, useEffect, useState, createContext } from "react";
+import axios from "axios";
 
-export const UserContext = createContext({});
+const AuthContext = createContext();
 
-export function UserContextProvider({children}){
+const AuthProvider = ({ children }) => {
+  const [auth, setAuth] = useState({
+    user: null,
+    token: "",
+  });
+  // default axios...
 
-    const [user,setUser] = useState(null);
+  axios.defaults.headers.common["Authorization"] = auth?.token;
+  useEffect(() => {
+    const data = localStorage.getItem("auth");
+    if (data) {
+      const parseData = JSON.parse(data);
+      setAuth(
+        {
+          ...auth,
+          user: parseData.user,
+          token: parseData.token,
+        },
+        [auth]
+      );
+    }
+    // eslint-disable-next-line
+  }, []);
 
-    useEffect(()=>{
-        if(!user){
-            axios.get('/profile').then(({data})=>{
-                setUser(data)
-            })
-        }
-    },[])
+  return (
+    <AuthContext.Provider value={[auth, setAuth]}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
+//custom hook..
 
-    return(
-        <UserContext.Provider value={{user,setUser}}>
-            {children}
-        </UserContext.Provider>
-    )
-}
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export { useAuth, AuthProvider };

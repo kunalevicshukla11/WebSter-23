@@ -5,10 +5,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import { useAuth } from "../../context/userContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
 
@@ -22,6 +24,12 @@ const Login = () => {
       );
 
       if (res.data.success) {
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
         toast.success(res.data.message);
         navigate("/dashboard");
       } else {
@@ -49,18 +57,22 @@ const Login = () => {
             <span className="  text-[17px]">
               Don't have an account?{" "}
               <NavLink className="font-bold" to="/signup-student">
-                SignUp
+                Sign Up
               </NavLink>
             </span>
           </div>
-          <form action="/Login" method="post" onSubmit={handleSubmit}>
+          <form
+            className=""
+            action="/Login"
+            method="post"
+            onSubmit={handleSubmit}
+          >
             <div className="flex flex-col py-4 px-2">
               <lable className=" text-md font-bold">Email</lable>
               <input
-                className="w-full h-[40px] pl-1 bg-white text-black"
+                className="w-full  p-1.5 text-white bg-gray-700"
                 type="email"
                 name="email"
-                placeholder="Email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -70,11 +82,10 @@ const Login = () => {
             <div className="flex flex-col py-4 px-2">
               <lable className="text-md font-bold ">Password</lable>
               <input
-                className="w-full pl-1 h-[30px] bg-white text-black"
+                className="w-full p-2 text-white bg-gray-700"
                 type="password"
                 name="password"
                 size={30}
-                placeholder="Password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -94,7 +105,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };

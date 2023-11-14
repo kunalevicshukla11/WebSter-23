@@ -77,4 +77,21 @@ const deleteComplaint = AsyncErrorHandler(async (req, res, next) => {
   });
 });
 
-export { newComplaint, getAllComplaints, singleComplaint, deleteComplaint };
+const getSingleHostelComplaint = AsyncErrorHandler(async (req, res, next) => {
+  const { HostelName } = req.params;
+
+  const comp = await Complaint.find({ name: HostelName }).populate("student");
+  res.status(200).json({
+    success: true,
+    message: "Fetched Successfully!",
+    comp,
+  });
+});
+
+export {
+  newComplaint,
+  getAllComplaints,
+  singleComplaint,
+  deleteComplaint,
+  getSingleHostelComplaint,
+};

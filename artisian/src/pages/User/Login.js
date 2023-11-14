@@ -51,10 +51,10 @@ const Login = () => {
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[400px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-70">
+        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-80">
           <div className="text-center">
-            <h1 className="text-3xl mb-2">Student Login</h1>
-            <span className=" text-[17px]">
+            <h1 className="text-3xl font-mono font-bold pb-3">Student Login</h1>
+            <span className="  text-[17px]">
               Don't have an account?{" "}
               <NavLink className="font-bold" to="/signup-student">
                 Sign Up
@@ -68,7 +68,7 @@ const Login = () => {
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col py-4 px-2">
-              <lable className="text-lg font-mono font-bold">Email</lable>
+              <lable className=" text-md font-bold">Email</lable>
               <input
                 className="w-full  p-1.5 text-white bg-gray-700"
                 type="email"
@@ -79,8 +79,8 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="flex flex-col py-1 px-2">
-              <lable className="text-lg font-mono font-bold">Password</lable>
+            <div className="flex flex-col py-4 px-2">
+              <lable className="text-md font-bold ">Password</lable>
               <input
                 className="w-full p-2 text-white bg-gray-700"
                 type="password"
@@ -97,7 +97,7 @@ const Login = () => {
               Remember me
             </p>
             <button
-              className="border w-full my-5 py-3 hover:bg-zinc-950  font-bold"
+              className="border w-full my-5 py-4 hover:bg-zinc-950 font-bold"
               type="submit"
             >
               Login

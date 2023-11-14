@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../CSS/RegisterStudent.css";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -96,7 +96,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-     </>
+    </>
   );
 };
 

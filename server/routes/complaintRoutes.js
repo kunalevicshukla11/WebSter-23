@@ -12,7 +12,7 @@ import { requireSignIn } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 //create a new complaint.
-router.post("/new-complaint", requireSignIn, newComplaint);
+router.post("/new-complaint", newComplaint);
 
 //get all complaints.
 router.get("/get-all-complaints", requireSignIn, getAllComplaints);

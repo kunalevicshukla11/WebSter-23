@@ -3,16 +3,31 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ".././CSS/compCss.css";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/userContext.js";
+import WrapperCompPage from "./WrapperCompPage.js";
+import Comp from "./Comp.js";
 
 const ComplaintsPage = (props) => {
   const [compData, setCompData] = useState([]);
   const navigate = useNavigate();
+  const [auth, setAuth] = useAuth();
 
   useEffect(() => {
     getCompalaints();
   }, []);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+
+    localStorage.removeItem("auth");
+    navigate("/");
+  };
 
   const getCompalaints = async () => {
     const { data } = await axios.get(
@@ -20,34 +35,36 @@ const ComplaintsPage = (props) => {
     );
     setCompData(data.comp);
   };
+  if (compData.length === 0) {
+    return (
+      <WrapperCompPage>
+        <h2>No jobs to display...</h2>
+      </WrapperCompPage>
+    );
+  }
   return (
     <>
-      <Navbar></Navbar>
-      <div className="flex justify-center items-center">
-        {compData.length === 0 ? (
-          "No Complaints Available"
-        ) : (
-          <div>
-            {compData.map((val) => {
-              return (
-                <div>
-                  <div className="cardComp">
-                    <div className="ilustrationComp"></div>
-                    <h3 className="Comph3">CreatedBy: {val.student.name}</h3>
-                    <p className="Compp">{val.content}</p>
-                    <button
-                      className="CompB"
-                      //   onSubmit={navigate(`/sigle-complaint/${val._id}`)}
-                    >
-                      view complaint
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
+      <WrapperCompPage>
+        <Link to="/new-complaint" className="btn btn-hero">
+          Register Complaint
+        </Link>
+        <Link to="/mess-menu" className="btn edit-btn">
+          Mess Menu
+        </Link>
+
+        <button type="button" className="btn delete-btn" onClick={handleClick}>
+          Logout
+        </button>
+      </WrapperCompPage>
+      <WrapperCompPage>
+        <h5>Total Complaints</h5>
+
+        <div className="jobs">
+          {compData.map((val) => {
+            return <Comp compData={val} />;
+          })}
+        </div>
+      </WrapperCompPage>
     </>
   );
 };

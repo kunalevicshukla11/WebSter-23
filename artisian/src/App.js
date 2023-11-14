@@ -13,6 +13,9 @@ import Patel from "./Hostels/Patel";
 import NotFound from "./components/NotFound";
 import Contact from "./pages/Contact";
 import Complaint from "./pages/Complaint";
+import Messmenu from "./pages/Messmenu";
+import Profile from "./pages/Profile";
+import RegisterComplaint from "./pages/RegisterComplaint";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="/dashboard/patel" element={<Patel />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/sigle-complaint/:compID" element={<Complaint />} />
+        <Route path="/mess-menu" element={<Messmenu />} />
+        <Route path="/user-profile" element={<Profile />} />
+        <Route path="/new-complaint" element={<RegisterComplaint />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -54,7 +54,7 @@ const Login = () => {
               <NavLink to="/signup-admin">SignUp</NavLink>
             </span>
           </div>
-          <div className="form formLUser">
+          <div className="formLUser">
             <form action="/Login" method="post" onSubmit={handleSubmit}>
               <input
                 type="email"

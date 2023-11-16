@@ -68,7 +68,7 @@ const Profile = () => {
 
   return (
     <>
-      <h1>Profile</h1>
+      <h1>Profile {auth.user.role} </h1>
       {/* <div>
         <img src={newPhoto || auth.user.photo} alt="Profile" />
         <input type="file" accept="image/*" onChange={handlePhotoChange} />
@@ -86,14 +86,14 @@ const Profile = () => {
         )}
         {auth.user.role === 1 && (
           <>
-            <p>Hostel ID: {auth.user.hostelID}</p>
-            <p>Hostel Name: {auth.user.hostelName}</p>
+            <p>Hostel ID: {auth.user.HostelID}</p>
+            <p>Hostel Name: {auth.user.HostelName}</p>
           </>
         )}
         {auth.user.role === 3 && (
           <>
-            <p>Branch: {auth.user.branch}</p>
-            <p>Registration No: {auth.user.registrationNo}</p>
+            <p>Hostel ID: {auth.user.HostelID}</p>
+            <p>Hostel Name: {auth.user.HostelName}</p>
           </>
         )}
         {auth.user.role === 4 && (

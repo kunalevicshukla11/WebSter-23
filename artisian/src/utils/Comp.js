@@ -1,9 +1,11 @@
 import React from "react";
-import WrapperComp from "./WrapperComp.js";
+import WrapperComp from "../StyledComponents/WrapperComp.js";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/userContext.js";
 
 const Comp = (props) => {
   const data = props.compData;
+  const [auth, setAuth] = useAuth();
   return (
     <WrapperComp>
       <header>
@@ -22,9 +24,15 @@ const Comp = (props) => {
             <Link to={`/sigle-complaint/${data._id}`} className="btn edit-btn">
               See Complaint
             </Link>
-            <button type="button" className="btn delete-btn">
-              Resolve
-            </button>
+            {auth.user.role === 1 ? (
+              <>
+                <button type="button" className="btn delete-btn">
+                  Resolve
+                </button>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </footer>
       </div>

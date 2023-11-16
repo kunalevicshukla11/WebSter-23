@@ -19,6 +19,14 @@ const ComplaintSchema = new mongoose.Schema({
     ref: "Student",
     required: true,
   },
+  upvote: {
+    type: Number,
+    default: 0,
+  },
+  downvote: {
+    type: Number,
+    default: 0,
+  },
 });
 
 export const ComplaintModel = mongoose.model("Complaint", ComplaintSchema);

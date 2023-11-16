@@ -19,7 +19,7 @@ router.get("/get-all-complaints", requireSignIn, getAllComplaints);
 
 //simgle complaint..
 
-router.get("/sigle-complaint/:compID", requireSignIn, singleComplaint);
+router.get("/sigle-complaint/:compID", singleComplaint);
 
 //delete-complaint...
 

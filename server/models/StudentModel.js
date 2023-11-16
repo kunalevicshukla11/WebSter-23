@@ -25,6 +25,10 @@ const StudentSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    role: {
+      type: Number,
+      default: 2,
+    },
   },
   { timestamps: true }
 );

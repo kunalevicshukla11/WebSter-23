@@ -5,7 +5,7 @@ import ".././CSS/compCss.css";
 import axios from "axios";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/userContext.js";
-import WrapperCompPage from "./WrapperCompPage.js";
+import WrapperCompPage from "../StyledComponents/WrapperCompPage.js";
 import Comp from "./Comp.js";
 
 const ComplaintsPage = (props) => {
@@ -38,24 +38,50 @@ const ComplaintsPage = (props) => {
   if (compData.length === 0) {
     return (
       <WrapperCompPage>
-        <h2>No jobs to display...</h2>
+        {auth?.user?.role !== 1 ? (
+          <>
+            <Link to="/new-complaint" className="btn btn-hero">
+              Register Complaint
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
+        <Link to="/mess-menu" className="btn edit-btn">
+          Mess Menu
+        </Link>
+        <button type="button" className="btn delete-btn" onClick={handleClick}>
+          Logout
+        </button>
+        <h2>Currently No Complaints....</h2>
       </WrapperCompPage>
     );
   }
   return (
     <>
-      <WrapperCompPage>
-        <Link to="/new-complaint" className="btn btn-hero">
-          Register Complaint
-        </Link>
-        <Link to="/mess-menu" className="btn edit-btn">
-          Mess Menu
-        </Link>
-
-        <button type="button" className="btn delete-btn" onClick={handleClick}>
-          Logout
-        </button>
-      </WrapperCompPage>
+      <div>
+        <WrapperCompPage>
+          {auth?.user?.role !== 1 ? (
+            <>
+              <Link to="/new-complaint" className="btn btn-hero">
+                Register Complaint
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
+          <Link to="/mess-menu" className="btn edit-btn">
+            Mess Menu
+          </Link>
+          <button
+            type="button"
+            className="btn delete-btn"
+            onClick={handleClick}
+          >
+            Logout
+          </button>
+        </WrapperCompPage>
+      </div>
       <WrapperCompPage>
         <h5>Total Complaints</h5>
 

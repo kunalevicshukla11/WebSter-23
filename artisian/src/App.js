@@ -34,7 +34,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/sigle-complaint/:compID" element={<Complaint />} />
         <Route path="/mess-menu" element={<Messmenu />} />
-        <Route path="/user-profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/new-complaint" element={<RegisterComplaint />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

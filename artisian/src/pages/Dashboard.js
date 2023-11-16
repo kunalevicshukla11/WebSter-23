@@ -5,6 +5,7 @@ import { useAuth } from "../context/userContext";
 import Layout from "../components/Layout";
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
+
   if (!auth.user) {
     return (
       <>
@@ -12,6 +13,8 @@ const Dashboard = () => {
       </>
     );
   }
+
+  
   return (
     <>
       <Layout>

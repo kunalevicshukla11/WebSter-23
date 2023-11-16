@@ -61,7 +61,7 @@ const ComplaintsPage = (props) => {
     <>
       <div>
         <WrapperCompPage>
-          {auth?.user?.role !== 1 ? (
+          {auth?.user?.role === 2 || auth?.user?.role === 4 ? (
             <>
               <Link to="/new-complaint" className="btn btn-hero">
                 Register Complaint

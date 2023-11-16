@@ -4,15 +4,22 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/userContext.js";
 import WrapperComp from "../StyledComponents/WrapperComp";
+import AddCommentWrapper from "../StyledComponents/AddCommentWrapper.js";
+import AllCommentWrapper from "../StyledComponents/AllCommentsWrapper.js";
 import { useNavigate } from "react-router-dom";
 import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
 
 const Complaint = () => {
   const params = useParams();
   const [complaint, setComplaint] = useState();
+  const [comment, setComments] = useState([]);
+  const [totalUpvote, setTotalUpvotes] = useState(0);
+  const [totalDownvote, setTotalDownvotes] = useState(0);
+  const [newcontent, setnewContent] = useState("");
   const id = params?.compID;
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const [newComment, setNewComment] = useState("");
 
   const getComplaint = async () => {
     try {
@@ -24,11 +31,33 @@ const Complaint = () => {
       console.log(error);
     }
   };
+  const getComment = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:4000/api/v1/comment/get-comments/${id}`
+      );
+      setComments(res?.data?.comments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     if (id) {
       getComplaint();
     }
   }, []);
+
+  useEffect(() => {
+    if (complaint) {
+      setTotalUpvotes(complaint?.upvote);
+      setTotalDownvotes(complaint?.downvote);
+    }
+  }, []);
+  useEffect(() => {
+    if (complaint) {
+      getComment();
+    }
+  }, [complaint]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -40,6 +69,21 @@ const Complaint = () => {
     localStorage.removeItem("auth");
     navigate("/");
   };
+
+  const UserID = auth?.user?._id;
+
+  const handleNewComment = async (e) => {
+    e.preventDefault();
+    setNewComment(newcontent);
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/comment/new-comment",
+        { commentedBy: UserID, commentedOn: id, content: newcontent }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   if (!complaint) {
     return (
       <>
@@ -47,17 +91,21 @@ const Complaint = () => {
       </>
     );
   }
+  if (!auth?.user) {
+    return (
+      <>
+        <h1>Login First!!</h1>
+      </>
+    );
+  }
 
-  let totalUpvote = complaint.upvote;
-  let totalDownvote = complaint.downvote;
-
-  const handleUpvote = async () => {
-    totalUpvote = totalUpvote + 1;
+  const handleUpvote = () => {
+    setTotalUpvotes(totalUpvote + 1);
     console.log(totalUpvote);
   };
 
-  const handleDownvote = async () => {
-    totalDownvote = totalDownvote + 1;
+  const handleDownvote = () => {
+    setTotalDownvotes(totalDownvote + 1);
     console.log(totalDownvote);
   };
 
@@ -136,9 +184,63 @@ const Complaint = () => {
           </footer>
         </div>
       </WrapperComp>
-      <div>
-        <h1>All the comments will be there</h1>
-      </div>
+      <AddCommentWrapper>
+        <div className="comment-body">
+          <div className="comment-container">
+            <h2>Leave a Comment</h2>
+
+            <form className="comment-form" onSubmit={handleNewComment}>
+              <input
+                type="text"
+                className="comment-input"
+                placeholder="Write your comment..."
+                value={newcontent}
+                required
+                onChange={(e) => setnewContent(e.target.value)}
+              />
+              <button type="submit" className="comment-button">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </AddCommentWrapper>
+      <AllCommentWrapper>
+        <div className="allcomment-body">
+          <div className="allcomment-container">
+            <h2 className="allcommenth2">Comments</h2>
+            {comment.length === 0 && !newComment ? (
+              <>
+                <h2>No Comments Yet..</h2>
+              </>
+            ) : (
+              <></>
+            )}
+            {comment.map((val) => (
+              <>
+                <div className="allcomment">
+                  <div className="allcomment-content">
+                    <p className="allcomment-author">
+                      Name: {val?.commentedBy?.name}
+                    </p>
+                    <p className="allcomment-text">Comment: {val?.content}</p>
+                  </div>
+                </div>
+              </>
+            ))}
+            {newComment ? (
+              <div className="allcomment">
+                <div className="allcomment-content">
+                  <p className="allcomment-author">Name: {auth?.user?.name}</p>
+                  <p className="allcomment-text">Comment: {newComment}</p>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      </AllCommentWrapper>
     </>
   );
 };

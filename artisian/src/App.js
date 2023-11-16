@@ -16,6 +16,11 @@ import Complaint from "./pages/Complaint";
 import Messmenu from "./pages/Messmenu";
 import Profile from "./pages/Profile";
 import RegisterComplaint from "./pages/RegisterComplaint";
+import RegisterAccountant from "./pages/Accountant/Register"
+import LoginAccountant from "./pages/Accountant/Login"
+import RegisterStudentRep from "./pages/StudentRep/Register"
+import LoginStudentRep from "./pages/StudentRep/Login"
+
 
 function App() {
   return (
@@ -24,18 +29,33 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/signup-student" element={<RegisterUser />} />
         <Route path="/login-student" element={<LoginUser />} />
+
         <Route path="/signup-admin" element={<RegisterAdmin />} />
         <Route path="/login-admin" element={<LoginAdmin />} />
+
+
+        <Route path="/signup-accountant" element={<RegisterAccountant />} />
+        <Route path="/login-accountant" element={<LoginAccountant />} />
+
+        <Route path="/signup-studentrep" element={<RegisterStudentRep />} />
+        <Route path="/login-studentrep" element={<LoginStudentRep />} />
+
+
+
+
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/tandon" element={<Tandon />} />
         <Route path="/dashboard/tilak" element={<Tilak />} />
         <Route path="/dashboard/malviya" element={<Malviya />} />
         <Route path="/dashboard/patel" element={<Patel />} />
+
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
+
         <Route path="/sigle-complaint/:compID" element={<Complaint />} />
         <Route path="/mess-menu" element={<Messmenu />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/new-complaint" element={<RegisterComplaint />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

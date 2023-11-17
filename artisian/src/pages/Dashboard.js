@@ -2,7 +2,7 @@ import React from "react";
 
 import HostelCard from "../components/HostelCard";
 import { useAuth } from "../context/userContext";
-import Layout from "../components/Layout";
+
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
 
@@ -17,14 +17,12 @@ const Dashboard = () => {
   
   return (
     <>
-      <Layout>
-        <div className="flex justify-center items-center h-screen">
-          <HostelCard
-            title="Sample Card"
-            content="This is a simple card component."
-          />
-        </div>
-      </Layout>
+      <div className="flex justify-center items-center h-screen">
+        <HostelCard
+          title="Sample Card"
+          content="This is a simple card component."
+        />
+      </div>
     </>
   );
 };

@@ -13,11 +13,11 @@ module.exports = {
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
+      a: "1165px",
+      //for about section
+
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
-
-      a: "1306px",
-      //for about section
 
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }

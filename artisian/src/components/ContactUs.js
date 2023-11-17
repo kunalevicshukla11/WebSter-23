@@ -76,22 +76,26 @@ const ContactUs = () => {
           src="/images/contactUS2.jpg"
           alt="Contact Us-image"
         />
-        <div className=" bg-zinc-950 border-[1px] bg-opacity-10 h-[180px]  absolute inset-0 flex flex-col max-w-screen ">
-          <div className="flex justify-start gap-56 ">
+        <div className="   bg-opacity-20  absolute inset-0 flex flex-col max-w-screen ">
+          <div className="flex justify-start ">
             <img
-              className=" h-[400px] -mt-24 w-[350px]"
+              className="absolute h-[360px] -mt-24 w-[350px]"
               src="/images/Api Artisans-logos_white.png"
               alt="Logo"
             />
+            <p className="absolute mt-[210px] w-[510px] font-bold text-opacity-40 ml-4 text-white text-5xl">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore ilu ka matlab iloveyou
+            </p>
             <div className="text-center">
-              <p className="mt-[20px] text-gray-300 font-bold text-opacity-40 text-6xl">
+              <p className="mt-[20px] ml-[520px] text-gray-300 font-bold text-opacity-40 text-6xl">
                 We work for you
               </p>
-              <p className="flex mt-4 w-[400px] text-opacity-40 text-3xl text-gray-400 font-bold font-sans mx-auto">
+              <p className="flex mt-4 w-[400px] ml-[520px] text-opacity-40 text-3xl text-gray-400 font-bold font-sans mx-auto">
                 Follow Us :
                 <div className="flex mt-[6px] ml-4  gap-4">
                   <FaInstagram
-                    className={`social-icon rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 cursor-pointer ${
                       isInstagramHovered ? "active" : ""
                     }`}
                     style={{
@@ -102,7 +106,7 @@ const ContactUs = () => {
                     onMouseLeave={() => handleIconMouseLeave("Instagram")}
                   />
                   <FaXTwitter
-                    className={`social-icon rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 cursor-pointer ${
                       isTwitterHovered ? "active" : ""
                     }`}
                     style={{
@@ -113,7 +117,7 @@ const ContactUs = () => {
                     onMouseLeave={() => handleIconMouseLeave("Twitter")}
                   />
                   <FaDiscord
-                    className={`social-icon rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 cursor-pointer ${
                       isDiscordHovered ? "active" : ""
                     }`}
                     style={{
@@ -124,7 +128,7 @@ const ContactUs = () => {
                     onMouseLeave={() => handleIconMouseLeave("Discord")}
                   />
                   <ImFacebook2
-                    className={`social-icon p-1 cursor-pointer ${
+                    className={` p-1 cursor-pointer ${
                       isFacebookHovered ? "active" : ""
                     }`}
                     style={{
@@ -135,7 +139,7 @@ const ContactUs = () => {
                     onMouseLeave={() => handleIconMouseLeave("Facebook")}
                   />
                   <BsYoutube
-                    className={`social-icon rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 cursor-pointer ${
                       isYoutubeHovered ? "active" : ""
                     }`}
                     style={{
@@ -149,7 +153,7 @@ const ContactUs = () => {
               </p>
             </div>
           </div>
-          <div className="self-end mr-4 -mt-64">
+          <div className="self-end mr-4 -mt-[174px] items-center justify-center">
             <Contact className="bg-white p-4 rounded-md" />
           </div>
         </div>

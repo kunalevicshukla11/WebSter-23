@@ -9,7 +9,7 @@ export default function Landing() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <img
-        className="h-full m-0 p-0 bg-center bg-fixed bg-cover bg-no-repeat object-cover object-center"
+        className="h-screen m-0 p-0 bg-center bg-fixed bg-cover bg-no-repeat object-cover object-center"
         src="/images/backg.png"
         alt="background-image"
       />

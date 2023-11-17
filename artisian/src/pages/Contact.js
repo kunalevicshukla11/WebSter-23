@@ -27,62 +27,58 @@ const Contact = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      <h2>Contact</h2>
-      <form ref={form} onSubmit={sendEmail} style={formStyle}>
-        <label style={labelStyle}>Name</label>
-        <input type="text" name="from_name" style={inputStyle} />
-        <label style={labelStyle}>Email</label>
-        <input type="email" name="from_email" style={inputStyle} />
-        <label style={labelStyle}>Message</label>
-        <textarea name="message" style={inputStyle} />
-        <input type="submit" value="Send" style={buttonStyle} />
-      </form>
-    </div>
+    <>
+      <div className="relative">
+        <div className=" mt-36 ml-48 mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
+          <h2 className="text-5xl text-gray-400 font-bold tracking-wider">
+            Reach Out Here
+          </h2>
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className=" -mt-4 p-6  h-full w-[370px]  rounded-sm bg-pink-900 bg-opacity-50"
+          >
+            <input
+              type="text"
+              name="from_name"
+              placeholder="Name"
+              className="w-full  p-2 mb-5 border-2 border-gray-900 bg-transparent"
+            />
+
+            <input
+              type="email"
+              name="from_email"
+              placeholder="Email"
+              className="w-full p-2 mb-5 border-2 border-gray-900 bg-transparent"
+            />
+
+            <textarea
+              name="message"
+              placeholder="Write Something"
+              className="w-full p-2 mb-5 border-2 border-gray-900 bg-transparent"
+            />
+            <input
+              type="submit"
+              value="Send"
+              className="bg-zinc-900 -mt-12 text-white p-3 rounded-md cursor-pointer "
+            />
+          </form>
+        </div>
+        <div className="flex justify-evenly fixed bottom-0 left-0 w-full bg-black opacity-70 text-white p-4 h-[60px] ">
+          <p className=" text-2xl text-white font-mono font-bold cursor-pointer hover:opacity-75">
+            Copyright © 2023 Your Company Name. All Rights Reserved
+          </p>
+          <p className="cursor-pointer hover:opacity-75 text-2xl">
+            Terms of Service
+          </p>
+          <p className="cursor-pointer hover:opacity-75 text-2xl">
+            Privacy Policy
+          </p>
+          <p className="cursor-pointer hover:opacity-75 text-2xl">Cookies</p>
+        </div>
+      </div>
+    </>
   );
-};
-
-const containerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  height: "100vh",
-  margin: "auto",
-  backgroundColor: "transparent",
-  color: "var(--text-color)",
-  margin: "50px",
-};
-
-const formStyle = {
-  maxWidth: "400px",
-  padding: "20px",
-  border: "2px solid #333", // Add a 2px solid border around the form
-  borderRadius: "5px",
-  backgroundColor: "grey",
-};
-
-const labelStyle = {
-  display: "block",
-  margin: "10px 0",
-  color: "var(--text-color)",
-};
-
-const inputStyle = {
-  width: "100%",
-  padding: "8px",
-  margin: "5px 0",
-  boxSizing: "border-box",
-  border: "2px solid #333",
-};
-
-const buttonStyle = {
-  backgroundColor: "var(--button-background)",
-  color: "var(--button-text-color)",
-  padding: "10px 15px",
-  border: "2px solid #333",
-  borderRadius: "5px",
-  cursor: "pointer",
 };
 
 export default Contact;

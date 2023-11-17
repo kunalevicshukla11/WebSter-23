@@ -2,6 +2,7 @@ import React from "react";
 
 import HostelCard from "../components/HostelCard";
 import { useAuth } from "../context/userContext";
+import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
@@ -14,9 +15,9 @@ const Dashboard = () => {
     );
   }
 
-  
   return (
     <>
+      <Navbar />
       <div className="flex justify-center items-center h-screen">
         <HostelCard
           title="Sample Card"

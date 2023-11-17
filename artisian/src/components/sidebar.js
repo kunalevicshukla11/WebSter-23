@@ -66,7 +66,7 @@ const Sidebar = () => {
             <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
               <Box flex="1" textAlign="left">
                 <NavLink className="text-2xl" to="/">
-                  Student Representative
+                  Representative (Student)
                 </NavLink>
               </Box>
               <AccordionIcon />

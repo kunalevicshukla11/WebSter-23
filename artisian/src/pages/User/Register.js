@@ -45,7 +45,7 @@ const Register = () => {
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[450px] p-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-60">
+        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[450px] p-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-80">
           <div className="text-center">
             <h1 className="text-3xl font-mono font-bold">Create Account</h1>
             <span className="  text-[17px]">

@@ -51,9 +51,11 @@ const Login = () => {
           alt="loginbg"
         />
 
-        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-80">
+        <div className="absolute w-[300px] h-[450px]  sm:w-[400px] sm:h-[430px] p-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-950  text-gray-300 opacity-80">
           <div className="text-center">
-            <h1 className="text-3xl font-mono font-bold pb-3">Student Representative Login</h1>
+            <h1 className="text-[25.5px] font-mono font-bold ">
+              Student Representative Login
+            </h1>
             <span className="  text-[17px]">
               Don't have an account?{" "}
               <NavLink className="font-bold" to="/signup-studentrep">
@@ -67,7 +69,7 @@ const Login = () => {
             method="post"
             onSubmit={handleSubmit}
           >
-            <div className="flex flex-col py-4 px-2">
+            <div className="flex flex-col py-2 px-2">
               <lable className=" text-md font-bold">Email</lable>
               <input
                 className="w-full  p-1.5 text-white bg-gray-700"
@@ -79,7 +81,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="flex flex-col py-4 px-2">
+            <div className="flex flex-col p-2 px-2">
               <lable className="text-md font-bold ">Password</lable>
               <input
                 className="w-full p-2 text-white bg-gray-700"
@@ -97,7 +99,7 @@ const Login = () => {
               Remember me
             </p>
             <button
-              className="border w-full my-5 py-4 hover:bg-zinc-950 font-bold"
+              className="border w-full  py-4 hover:bg-zinc-950 font-bold"
               type="submit"
             >
               Login
@@ -111,4 +113,3 @@ const Login = () => {
 };
 
 export default Login;
-

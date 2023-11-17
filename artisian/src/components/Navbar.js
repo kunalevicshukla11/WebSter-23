@@ -34,7 +34,7 @@ export default function Navbar() {
     else if (active === "accountant") setShowAccountantDropdown(true);
     else if (active === "studentRep") setShowStudentRepDropdown(true);
   };
-
+  //  auth?.user?.name
   const handleMouseLeave = () => {
     setShowHomeDropdown(false);
     setShowStudentDropdown(false);

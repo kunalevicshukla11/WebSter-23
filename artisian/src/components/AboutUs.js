@@ -3,7 +3,7 @@ import { HiUser } from "react-icons/hi2";
 const AboutUs = () => {
   return (
     <>
-      <div className="w-full">
+      <div className="w-full h-full">
         <div className="absolute flex flex-col">
           <h1 className="ml-4 mt-3 pl-2 pr-2 max-w-fit bg-teal-700 bg-opacity-40 text-gray-400">
             Who we are

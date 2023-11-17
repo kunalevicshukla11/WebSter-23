@@ -1,14 +1,13 @@
 import { studentModel as Student } from "../models/StudentModel.js";
 import { adminModel as Admin } from "../models/AdminModel.js";
-import {accountantModel as Account} from "../models/AccountantModel.js"
-import {StudentRepModel as StudentRep} from "../models/StudentRepModel.js"
+import { accountantModel as Account } from "../models/AccountantModel.js";
+import { StudentRepModel as StudentRep } from "../models/StudentRepModel.js";
 
 import { comparePassword, hashPassword } from "../helper/auth.js";
 import AsyncErrorHandler from "../error/CatchAsyncError.js";
 import Errorhandler from "../error/errorClass.js";
 import jwt from "jsonwebtoken";
 
-//register Student
 const RegisterStudent = AsyncErrorHandler(async (req, res, next) => {
   const { name, email, password, registrationNo, branch } = req.body;
 
@@ -250,7 +249,6 @@ const RegisterAccountant = AsyncErrorHandler(async (req, res, next) => {
   });
 });
 
-
 //login for accountant
 
 const LoginAccountant = AsyncErrorHandler(async (req, res, next) => {
@@ -293,7 +291,6 @@ const LoginAccountant = AsyncErrorHandler(async (req, res, next) => {
   }
 });
 
-
 //Login for Student..
 
 const LoginStudentRep = AsyncErrorHandler(async (req, res, next) => {
@@ -332,7 +329,6 @@ const LoginStudentRep = AsyncErrorHandler(async (req, res, next) => {
     });
   }
 });
-
 
 const RegisterStudentRep = AsyncErrorHandler(async (req, res, next) => {
   const { name, email, password, registrationNo, branch } = req.body;
@@ -390,8 +386,7 @@ const RegisterStudentRep = AsyncErrorHandler(async (req, res, next) => {
   });
 });
 
-
-export { 
+export {
   RegisterStudent,
   RegisterAdmin,
   LoginStudent,

@@ -1,20 +1,22 @@
 import React from "react";
-// import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
+import AboutUs from "../components/AboutUs";
+import ContactUs from "../components/ContactUs";
 // import Footer from "../components/Footer";
-import Layout from "../components/Layout";
 
 export default function Landing() {
   return (
     <>
-      <Layout>
-        <div className="">
-          <img
-            className="h-screen m-0 p-0 bg-center bg-fixed bg-cover bg-no-repeat object-cover object-center"
-            src="/images/backg.png"
-            alt="background-image"
-          />
-        </div>
-      </Layout>
+      <div className="flex flex-col">
+        <Navbar></Navbar>
+        <img
+          className="h-screen m-0 p-0 bg-center bg-fixed bg-cover bg-no-repeat object-cover object-center"
+          src="/images/backg.png"
+          alt="background-image"
+        />
+        <AboutUs></AboutUs>
+        <ContactUs></ContactUs>
+      </div>
     </>
   );
 }

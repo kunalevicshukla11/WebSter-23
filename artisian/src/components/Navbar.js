@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <nav className="">
-      <div className="absolute w-screen mx-auto flex justify-between items-center h-16 px-2 mt-6">
+      <div className="absolute w-full mx-auto flex justify-between items-center h-16 px-2 mt-6">
         <NavLink to="/">
           {nav ? (
             ""

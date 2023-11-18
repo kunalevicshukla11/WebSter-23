@@ -88,10 +88,29 @@ const getSingleHostelComplaint = AsyncErrorHandler(async (req, res, next) => {
   });
 });
 
+const updateUpvote = AsyncErrorHandler(async (req, res, next) => {
+  const { compID } = req.params;
+  const { totalUpvote, totalDownvote } = req.body;
+
+  const updatedComp = await Complaint.findOneAndUpdate(
+    { _id: compID },
+    {
+      upvote: totalUpvote,
+      downvote: totalDownvote,
+    }
+  );
+  res.status(200).json({
+    success: true,
+    message: "Upvoted",
+    updatedComp,
+  });
+});
+
 export {
   newComplaint,
   getAllComplaints,
   singleComplaint,
   deleteComplaint,
   getSingleHostelComplaint,
+  updateUpvote,
 };

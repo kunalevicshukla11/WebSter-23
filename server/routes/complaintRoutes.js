@@ -8,6 +8,7 @@ import {
   getSingleHostelComplaint,
   updateUpvote,
 } from "../controllers/complaintController.js";
+
 import { requireSignIn } from "../middleware/authMiddleware.js";
 
 const router = express.Router();

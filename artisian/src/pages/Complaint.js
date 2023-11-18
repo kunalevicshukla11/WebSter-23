@@ -118,6 +118,7 @@ const Complaint = () => {
       console.log(error);
     }
   };
+
   if (!complaint) {
     return (
       <>
@@ -125,6 +126,7 @@ const Complaint = () => {
       </>
     );
   }
+  
   if (!auth?.user) {
     return (
       <>

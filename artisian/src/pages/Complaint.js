@@ -21,6 +21,7 @@ const Complaint = () => {
   const navigate = useNavigate();
   const [newComment, setNewComment] = useState("");
   const [votedStatus, setVotedStatus] = useState(0);
+  const [isBanned, setisBanned] = useState(false);
 
   const getComplaint = async () => {
     try {
@@ -28,6 +29,19 @@ const Complaint = () => {
         `http://localhost:4000/api/v1/comp/sigle-complaint/${id}`
       );
       setComplaint(res.data.comp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getBannedUser = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/auth/check-banned-user",
+        { userId: auth?.user?._id }
+      );
+      if (res?.data?.student) {
+        setisBanned(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -68,6 +82,7 @@ const Complaint = () => {
       setTotalUpvotes(complaint?.upvote);
       setTotalDownvotes(complaint?.downvote);
       getVotedUser();
+      getBannedUser();
     }
   }, [complaint]);
   useEffect(() => {
@@ -91,6 +106,8 @@ const Complaint = () => {
 
   const handleNewComment = async (e) => {
     e.preventDefault();
+    if (isBanned) return;
+
     setNewComment(newcontent);
     try {
       const res = await axios.post(
@@ -210,6 +227,17 @@ const Complaint = () => {
     setVotedStatus(2);
   };
 
+  const handleBan = async ({ commentedBy }) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/auth/ban-user",
+        { userId: commentedBy }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <WrapperComp>
@@ -322,9 +350,27 @@ const Complaint = () => {
                 <div className="allcomment">
                   <div className="allcomment-content">
                     <p className="allcomment-author">
-                      Name: {val?.commentedBy?.name}
+                      Name:{" "}
+                      {val?.commentedBy?.name
+                        ? val.commentedBy.name
+                        : "Admin/Representative/Accountant"}
                     </p>
                     <p className="allcomment-text">Comment: {val?.content}</p>
+                    {auth?.user?.role === 4 ? (
+                      <button
+                        type="button"
+                        className="btn delete-btn"
+                        id={"banned"}
+                        style={{ marginBottom: "20px" }}
+                        onClick={() =>
+                          handleBan({ commentedBy: val?.commentedBy })
+                        }
+                      >
+                        Ban User
+                      </button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               </>

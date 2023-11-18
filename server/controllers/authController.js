@@ -2,6 +2,7 @@ import { studentModel as Student } from "../models/StudentModel.js";
 import { adminModel as Admin } from "../models/AdminModel.js";
 import { accountantModel as Account } from "../models/AccountantModel.js";
 import { StudentRepModel as StudentRep } from "../models/StudentRepModel.js";
+import { BannedUserModel as BannedUser } from "../models/BannedUsersModel.js";
 
 import { comparePassword, hashPassword } from "../helper/auth.js";
 import AsyncErrorHandler from "../error/CatchAsyncError.js";
@@ -386,6 +387,63 @@ const RegisterStudentRep = AsyncErrorHandler(async (req, res, next) => {
   });
 });
 
+const banUser = AsyncErrorHandler(async (req, res, next) => {
+  const { userId } = req.body;
+  if (!userId) {
+    return next(new Errorhandler("student is required!", 400));
+  }
+  const oldBanned = await BannedUser.findOne({ bannedUser: userId });
+  if (oldBanned) {
+    return res.status(400).json({
+      success: true,
+      message: "User already banned",
+      userId: null,
+    });
+  }
+
+  const user = await BannedUser.create({ bannedUser: userId });
+
+  res.status(200).json({
+    success: true,
+    message: "User Banned!!",
+    userId,
+  });
+});
+
+const unbanUser = AsyncErrorHandler(async (req, res, next) => {
+  const { userId } = req.body;
+
+  if (!userId) {
+    return next(new Errorhandler("Student is Required!!", 400));
+  }
+
+  const user = await BannedUser.findOneAndDelete({ bannedUser: userId });
+
+  res.status(200).json({
+    success: true,
+    message: "Unbanned User",
+    user,
+  });
+});
+
+const checkBannedUser = AsyncErrorHandler(async (req, res, next) => {
+  const { userId } = req.body;
+
+  const user = await BannedUser.findOne({ bannedUser: userId });
+
+  if (!user) {
+    res.status(200).json({
+      success: true,
+      student: null,
+    });
+  } else {
+    res.status(200).json({
+      success: true,
+      student: user,
+    });
+  }
+});
+
 export {
   RegisterStudent,
   RegisterAdmin,
@@ -395,4 +453,7 @@ export {
   LoginAccountant,
   RegisterStudentRep,
   LoginStudentRep,
+  banUser,
+  unbanUser,
+  checkBannedUser,
 };

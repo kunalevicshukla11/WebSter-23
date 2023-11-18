@@ -40,6 +40,12 @@ const AllCommentWrapper = styled.article`
     text-align: center;
     margin-bottom: 20px;
   }
+  .delete-btn {
+    background-color: #b82606;
+  }
+  .delete-btn: hover {
+    background-color: #179611;
+  }
 `;
 
 export default AllCommentWrapper;

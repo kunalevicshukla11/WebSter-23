@@ -34,7 +34,7 @@ export default function Navbar() {
     else if (active === "accountant") setShowAccountantDropdown(true);
     else if (active === "studentRep") setShowStudentRepDropdown(true);
   };
-
+  //  auth?.user?.name
   const handleMouseLeave = () => {
     setShowHomeDropdown(false);
     setShowStudentDropdown(false);
@@ -59,7 +59,7 @@ export default function Navbar() {
         </NavLink>
 
         <ul
-          className="hidden md:flex md:space-x-16 md:text-xl md:mr-8 md:mt-[30px] relative"
+          className="hidden a:flex a:space-x-16 a:text-xl a:mr-8 a:mt-[30px] relative"
           onMouseLeave={handleMouseLeave}
         >
           <li
@@ -72,21 +72,21 @@ export default function Navbar() {
               Home{" "}
             </NavLink>{" "}
             {showHomeDropdown && (
-              <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-700 text-white w-32 h-24 flex flex-col justify-center">
+              <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-700 text-white w-32 h-32 flex flex-col justify-center">
                 <NavLink
-                  className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 "
+                  className=" hover:opacity-50 font-mono text-center pb-2 pt-1 border-b-[2.5px] border-gray-900 "
                   to="/about"
                 >
                   About Us
                 </NavLink>
                 <NavLink
-                  className="hover:opacity-50 font-mono text-center "
+                  className="hover:opacity-50 border-b-[2.5px] border-gray-900 pb-2 font-mono text-center "
                   to="/contact"
                 >
                   Contact Us
                 </NavLink>
                 <NavLink
-                  className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 "
+                  className=" hover:opacity-50 font-mono text-center pb-1 "
                   to="/profile"
                 >
                   My-Profile
@@ -226,7 +226,7 @@ export default function Navbar() {
             <></>
           )}
         </ul>
-        <div onClick={handleNav} className="block mr-4 md:hidden  ">
+        <div onClick={handleNav} className="block mr-4 a:hidden  ">
           {nav ? (
             <AiOutlineCloseSquare className="hover:cursor-pointer h-[30px] w-[30px] " />
           ) : (

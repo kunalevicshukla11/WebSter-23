@@ -6,6 +6,7 @@ import {
   singleComplaint,
   deleteComplaint,
   getSingleHostelComplaint,
+  updateUpvote,
 } from "../controllers/complaintController.js";
 
 import { requireSignIn } from "../middleware/authMiddleware.js";
@@ -28,5 +29,8 @@ router.delete("/delete-comp/:compID", requireSignIn, deleteComplaint);
 
 //complaint - by hostels
 router.get("/all-complaints/:HostelName", getSingleHostelComplaint);
+
+//update vote.
+router.put("/update-vote/:compID", updateUpvote);
 
 export default router;

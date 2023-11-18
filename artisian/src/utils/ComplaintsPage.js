@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ".././CSS/compCss.css";
 import axios from "axios";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/userContext.js";
 import WrapperCompPage from "../StyledComponents/WrapperCompPage.js";
 import Comp from "./Comp.js";
@@ -35,6 +35,9 @@ const ComplaintsPage = (props) => {
     );
     setCompData(data.comp);
   };
+
+
+  
   if (compData.length === 0) {
     return (
       <WrapperCompPage>
@@ -47,9 +50,13 @@ const ComplaintsPage = (props) => {
         ) : (
           <></>
         )}
+
         <Link to="/mess-menu" className="btn edit-btn">
           Mess Menu
         </Link>
+        
+        
+
         <button type="button" className="btn delete-btn" onClick={handleClick}>
           Logout
         </button>
@@ -70,9 +77,11 @@ const ComplaintsPage = (props) => {
           ) : (
             <></>
           )}
+
           <Link to="/mess-menu" className="btn edit-btn">
             Mess Menu
           </Link>
+
           <button
             type="button"
             className="btn delete-btn"

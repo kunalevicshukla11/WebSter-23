@@ -20,6 +20,11 @@ import RegisterAccountant from "./pages/Accountant/Register"
 import LoginAccountant from "./pages/Accountant/Login"
 import RegisterStudentRep from "./pages/StudentRep/Register"
 import LoginStudentRep from "./pages/StudentRep/Login"
+import TandonExpense from "./HotelExpense/TandonExpense"
+import TilakExpense from "./HotelExpense/TilakExpense"
+import MalviyaExpense from "./HotelExpense/MalviyaExpense"
+import PatelExpense from "./HotelExpense/PatelExpense"
+
 
 
 function App() {
@@ -44,10 +49,20 @@ function App() {
 
 
         <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/dashboard/tandon" element={<Tandon />} />
         <Route path="/dashboard/tilak" element={<Tilak />} />
         <Route path="/dashboard/malviya" element={<Malviya />} />
         <Route path="/dashboard/patel" element={<Patel />} />
+
+
+        <Route path="/dashboard/tandon/expense" element={<TandonExpense/>} />
+        <Route path="/dashboard/tilak/expense" element={<TilakExpense/>} />
+        <Route path="/dashboard/malviya/expense" element={<MalviyaExpense/>} />
+        <Route path="/dashboard/patel/expense" element={<PatelExpense/>} />
+
+        
+
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />

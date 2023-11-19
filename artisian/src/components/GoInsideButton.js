@@ -32,12 +32,13 @@ const StyledButton = styled.button`
     ); /* Adjust gradient colors */
     border-top-left-radius: 15px; /* Adjust the border radius as needed */
     border-bottom-left-radius: 15px;
+
     z-index: -1;
     transition: 0.3s ease-in all;
   }
 
   &:hover {
-    color: whitesmoke;
+    color: linen;
   }
 
   &:hover:before {

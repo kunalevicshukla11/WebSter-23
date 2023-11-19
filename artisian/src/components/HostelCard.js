@@ -14,21 +14,27 @@ const HostelCard = ({ title, content }) => {
   };
 
   return (
-    <div className="w-3/4  m-auto">
-      <div className="mt-20">
+    <div className="w-3/4 mr-[38px]">
+      <div className="mt-20 ">
         <Slider {...settings}>
           {data.map((d) => (
             <div
               key={d.name}
-              className=" h-[450px] bg-yellow-600 bg-opacity-40 text-black rounded-xl"
+              className=" h-[480px] bg-zinc-950 bg-opacity-50 border-black border-4 text-black rounded-xl"
             >
-              <div className="h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl">
-                <img src={d.img} alt="" className="h-44 w-44 rounded-full" />
+              <div className="h-56  flex justify-center items-center rounded-t-xl pt-6">
+                <img
+                  src={d.img}
+                  alt=""
+                  className="h-[250px] w-[300px] object-bottom border-l-4 border-r-4 border-b-4  border-black   rounded-3xl rounded-t-none"
+                />
               </div>
 
               <div className="flex flex-col items-center justify-center gap-4 p-4">
-                <p className="text-xl font-semibold">{d.name}</p>
-                <p className="text-center">{d.about}</p>
+                <p className="text-3xl pt-4 text-orange-400 font-mono font-semibold">
+                  {d.name}
+                </p>
+                <p className="text-center text-white">{d.about}</p>
                 <Link to={`/dashboard/${d.link}`}>
                   <GoInsideButton>Go inside</GoInsideButton>
                 </Link>

@@ -29,7 +29,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative grid">
         <div className=" mt-[230px] ml-48 mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
           <h2 className="text-4xl text-white font-bold tracking-wider">
             Reach Out Here

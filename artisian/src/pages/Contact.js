@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
+import DottedButton from "../components/DottedButton";
 
 const Contact = () => {
   const form = useRef();
@@ -29,8 +30,8 @@ const Contact = () => {
   return (
     <>
       <div className="relative">
-        <div className=" mt-36 ml-48 mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
-          <h2 className="text-5xl text-gray-400 font-bold tracking-wider">
+        <div className=" mt-[230px] ml-48 mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
+          <h2 className="text-4xl text-white font-bold tracking-wider">
             Reach Out Here
           </h2>
           <form
@@ -57,14 +58,16 @@ const Contact = () => {
               placeholder="Write Something"
               className="w-full p-2 mb-5 border-2 border-gray-900 bg-transparent"
             />
-            <input
+            <DottedButton
               type="submit"
               value="Send"
               className="bg-zinc-900 -mt-12 text-white p-3 rounded-md cursor-pointer "
-            />
+            >
+              Send
+            </DottedButton>
           </form>
         </div>
-        <div className="flex justify-evenly fixed bottom-0 left-0 w-full bg-black opacity-70 text-white p-4 h-[60px] ">
+        <div className="flex justify-evenly fixed bottom-0 left-0 w-full bg-black opacity-50 text-white p-4 h-[60px] ">
           <p className=" text-2xl text-white font-mono font-bold cursor-pointer hover:opacity-75">
             Copyright © 2023 Your Company Name. All Rights Reserved
           </p>

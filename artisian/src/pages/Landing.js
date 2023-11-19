@@ -2,8 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import AboutUs from "../components/AboutUs";
 import ContactUs from "../components/ContactUs";
-// import Footer from "../components/Footer";
-
 export default function Landing() {
   return (
     <div className="flex flex-col min-h-screen">

@@ -83,19 +83,19 @@ const ContactUs = () => {
               src="/images/Api Artisans-logos_white.png"
               alt="Logo"
             />
-            <p className="absolute mt-[210px] w-[510px] font-bold text-opacity-40 ml-4 text-white text-5xl">
+            <p className="absolute mt-[210px] w-[510px] font-bold ml-4 text-white text-5xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore ilu ka matlab iloveyou
             </p>
             <div className="text-center">
-              <p className="mt-[20px] ml-[520px] text-gray-300 font-bold text-opacity-40 text-6xl">
+              <p className="mt-[20px] ml-[520px] text-white font-bold text-6xl">
                 We work for you
               </p>
-              <p className="flex mt-4 w-[400px] ml-[520px] text-opacity-40 text-3xl text-gray-400 font-bold font-sans mx-auto">
+              <p className="flex mt-4 w-[550px] ml-[520px]  text-3xl text-white font-bold font-sans mx-auto">
                 Follow Us :
-                <div className="flex mt-[6px] ml-4  gap-4">
+                <div className="flex -mt-[1px] ml-6 opacity-50 gap-4">
                   <FaInstagram
-                    className={` rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1  cursor-pointer ${
                       isInstagramHovered ? "active" : ""
                     }`}
                     style={{
@@ -104,9 +104,10 @@ const ContactUs = () => {
                     }}
                     onMouseEnter={() => handleIconMouseEnter("Instagram")}
                     onMouseLeave={() => handleIconMouseLeave("Instagram")}
+                    size={44}
                   />
                   <FaXTwitter
-                    className={` rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl -mt-[1px] p-1 cursor-pointer ${
                       isTwitterHovered ? "active" : ""
                     }`}
                     style={{
@@ -115,9 +116,10 @@ const ContactUs = () => {
                     }}
                     onMouseEnter={() => handleIconMouseEnter("Twitter")}
                     onMouseLeave={() => handleIconMouseLeave("Twitter")}
+                    size={44}
                   />
                   <FaDiscord
-                    className={` rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 -mt-[3px] cursor-pointer ${
                       isDiscordHovered ? "active" : ""
                     }`}
                     style={{
@@ -126,9 +128,10 @@ const ContactUs = () => {
                     }}
                     onMouseEnter={() => handleIconMouseEnter("Discord")}
                     onMouseLeave={() => handleIconMouseLeave("Discord")}
+                    size={48}
                   />
                   <ImFacebook2
-                    className={` p-1 cursor-pointer ${
+                    className={` p-1 -mt-[2px] cursor-pointer ${
                       isFacebookHovered ? "active" : ""
                     }`}
                     style={{
@@ -137,9 +140,10 @@ const ContactUs = () => {
                     }}
                     onMouseEnter={() => handleIconMouseEnter("Facebook")}
                     onMouseLeave={() => handleIconMouseLeave("Facebook")}
+                    size={44}
                   />
                   <BsYoutube
-                    className={` rounded-xl p-1 cursor-pointer ${
+                    className={` rounded-xl p-1 -mt-[1px] cursor-pointer ${
                       isYoutubeHovered ? "active" : ""
                     }`}
                     style={{
@@ -148,6 +152,7 @@ const ContactUs = () => {
                     }}
                     onMouseEnter={() => handleIconMouseEnter("Youtube")}
                     onMouseLeave={() => handleIconMouseLeave("Youtube")}
+                    size={44}
                   />
                 </div>
               </p>

@@ -36,7 +36,7 @@ const HostelCard = ({ title, content }) => {
                 </p>
                 <p className="text-center text-white">{d.about}</p>
                 <Link to={`/dashboard/${d.link}`}>
-                  <GoInsideButton>Go inside</GoInsideButton>
+                  <GoInsideButton>Explore</GoInsideButton>
                 </Link>
               </div>
             </div>

@@ -63,9 +63,9 @@ export default function Navbar({ style }) {
         className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 bg-${
           scroll
             ? " z-10 text-black h-24 bg-teal-600 bg-opacity-100 rounded-t-[90px] rounded-b-[90px] "
-            : "indigo-800 "
-        } border-l-[5px]  text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] bg-opacity-${
-          name == null ? 60 : 50
+            : "indigo-500 "
+        } border-l-[5px]   text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] bg-opacity-${
+          name == null ? 80 : 60
         }`}
       >
         <NavLink to="/">

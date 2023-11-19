@@ -16,6 +16,10 @@ import Complaint from "./pages/Complaint";
 import Messmenu from "./pages/Messmenu";
 import Profile from "./pages/Profile";
 import RegisterComplaint from "./pages/RegisterComplaint";
+import RegisterAccountant from "./pages/Accountant/Register";
+import LoginAccountant from "./pages/Accountant/Login";
+import RegisterStudentRep from "./pages/StudentRep/Register";
+import LoginStudentRep from "./pages/StudentRep/Login";
 import RegisterAccountant from "./pages/Accountant/Register"
 import LoginAccountant from "./pages/Accountant/Login"
 import RegisterStudentRep from "./pages/StudentRep/Register"
@@ -30,24 +34,28 @@ import PatelExpense from "./HotelExpense/PatelExpense"
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup-student" element={<RegisterUser />} />
-        <Route path="/login-student" element={<LoginUser />} />
+      <div className="">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup-student" element={<RegisterUser />} />
+          <Route path="/login-student" element={<LoginUser />} />
 
-        <Route path="/signup-admin" element={<RegisterAdmin />} />
-        <Route path="/login-admin" element={<LoginAdmin />} />
+          <Route path="/signup-admin" element={<RegisterAdmin />} />
+          <Route path="/login-admin" element={<LoginAdmin />} />
 
+          <Route path="/signup-accountant" element={<RegisterAccountant />} />
+          <Route path="/login-accountant" element={<LoginAccountant />} />
 
-        <Route path="/signup-accountant" element={<RegisterAccountant />} />
-        <Route path="/login-accountant" element={<LoginAccountant />} />
-
-        <Route path="/signup-studentrep" element={<RegisterStudentRep />} />
-        <Route path="/login-studentrep" element={<LoginStudentRep />} />
-
-
+          <Route path="/signup-studentrep" element={<RegisterStudentRep />} />
+          <Route path="/login-studentrep" element={<LoginStudentRep />} />
 
 
+    
+            
+         
+
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/dashboard/tandon" element={<Tandon />} />
@@ -64,15 +72,15 @@ function App() {
         
 
 
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/profile" element={<Profile />} />
 
-        <Route path="/sigle-complaint/:compID" element={<Complaint />} />
-        <Route path="/mess-menu" element={<Messmenu />} />
-        <Route path="/new-complaint" element={<RegisterComplaint />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="/sigle-complaint/:compID" element={<Complaint />} />
+          <Route path="/mess-menu" element={<Messmenu />} />
+          <Route path="/new-complaint" element={<RegisterComplaint />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </>
   );
 }

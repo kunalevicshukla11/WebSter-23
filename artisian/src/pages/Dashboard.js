@@ -2,7 +2,10 @@ import React from "react";
 
 import HostelCard from "../components/HostelCard";
 import { useAuth } from "../context/userContext";
-import Navbar from "../components/Navbar"
+
+import Navbar from "../components/Navbar";
+import AboutUs from "../components/AboutUs";
+import ContactUs from "../components/ContactUs";
 
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
@@ -17,13 +20,22 @@ const Dashboard = () => {
 
   return (
     <>
-    <Navbar/>
+
+      <img
+        className="absolute  h-full w-full"
+        src="/images/dash.jpg"
+        alt="dashboard bg"
+      ></img>
+      <Navbar className="" />
+
       <div className="flex justify-center items-center h-screen">
         <HostelCard
           title="Sample Card"
           content="This is a simple card component."
         />
       </div>
+      <AboutUs />
+      <ContactUs />
     </>
   );
 };

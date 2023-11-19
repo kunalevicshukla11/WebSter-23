@@ -4,8 +4,12 @@ import { ImMenu } from "react-icons/im";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import Sidebar from "./sidebar";
 import { useAuth } from "../context/userContext";
+import ProfileDropDown from "./ProfileDropdown";
+import UserSettings from "./UserSettings";
+import { Link } from "react-scroll";
+import { position } from "@chakra-ui/react";
 
-export default function Navbar() {
+export default function Navbar({ style }) {
   const [nav, setNav] = useState(false);
   const [showHomeDropdown, setShowHomeDropdown] = useState(false);
   const [showStudentDropdown, setShowStudentDropdown] = useState(false);
@@ -13,6 +17,7 @@ export default function Navbar() {
   const [showAccountantDropdown, setShowAccountantDropdown] = useState(false);
   const [showStudentRepDropdown, setShowStudentRepDropdown] = useState(false);
   const [auth, setAuth] = useAuth();
+  const name = auth?.user?.name;
 
   const handleLogout = (e) => {
     localStorage.removeItem("auth");
@@ -34,7 +39,7 @@ export default function Navbar() {
     else if (active === "accountant") setShowAccountantDropdown(true);
     else if (active === "studentRep") setShowStudentRepDropdown(true);
   };
-  //  auth?.user?.name
+
   const handleMouseLeave = () => {
     setShowHomeDropdown(false);
     setShowStudentDropdown(false);
@@ -43,62 +48,79 @@ export default function Navbar() {
     setShowStudentRepDropdown(false);
   };
 
+  const [scroll, setScroll] = useState(false);
+  const changeState = () => {
+    if (window.scrollY >= 70) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+  window.addEventListener("scroll", changeState);
   return (
-    <nav className="">
-      <div className="absolute w-full mx-auto flex justify-between items-center h-16 px-2 mt-6">
+    <nav className={`top-0 left-0 w-full  text-white `} style={style}>
+      <div
+        className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 bg-${
+          scroll
+            ? " z-10 text-black h-24 bg-teal-600 bg-opacity-100 rounded-t-[90px] rounded-b-[90px] "
+            : "indigo-500 "
+        } border-l-[5px]   text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] bg-opacity-${
+          name == null ? 80 : 60
+        }`}
+      >
         <NavLink to="/">
           {nav ? (
             ""
           ) : (
             <img
-              className="w-[328px] h-[328px] "
-              src="/images/Api Artisans-logos_transparent.png"
+              className="w-[328px] h-[328px] pb-10 "
+              src="/images/Api Artisans-logos_white.png"
               alt="Logo"
             />
           )}
         </NavLink>
 
         <ul
-          className="hidden a:flex a:space-x-16 a:text-xl a:mr-8 a:mt-[30px] relative"
+          className="hidden a:flex a:space-x-16 a:text-xl a:mr-8 a:mt-[10px] a:pb-10 relative"
           onMouseLeave={handleMouseLeave}
         >
-          <li
-            className=" p-[10px] h-[50px] bg-gray-700 rounded-[4px] hover:rounded-xl hover:outline-solid hover:border-2 border-gray-900 text-gray-300 "
-            onMouseEnter={() => handleMouseEnter("home")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <NavLink className="hover:opacity-50" to="/">
-              {" "}
-              Home{" "}
-            </NavLink>{" "}
-            {showHomeDropdown && (
-              <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-700 text-white w-32 h-32 flex flex-col justify-center">
-                <NavLink
-                  className=" hover:opacity-50 font-mono text-center pb-2 pt-1 border-b-[2.5px] border-gray-900 "
-                  to="/about"
-                >
-                  About Us
-                </NavLink>
-                <NavLink
-                  className="hover:opacity-50 border-b-[2.5px] border-gray-900 pb-2 font-mono text-center "
-                  to="/contact"
-                >
-                  Contact Us
-                </NavLink>
-                <NavLink
-                  className=" hover:opacity-50 font-mono text-center pb-1 "
-                  to="/profile"
-                >
-                  My-Profile
-                </NavLink>
-              </div>
-            )}
-          </li>
-
           {!auth.user ? (
             <>
               <li
-                className="hover:bg-gray-700 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-gray-300 border-gray-900 "
+                className=" p-[10px] h-[50px] bg-gray-300 rounded-[4px] hover:rounded-xl hover:outline-solid hover:border-2 border-gray-900 text-black "
+                onMouseEnter={() => handleMouseEnter("home")}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavLink className="hover:opacity-50" to="/">
+                  Home
+                </NavLink>
+                {showHomeDropdown && (
+                  <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-300 text-black w-32 h-24 flex flex-col justify-center">
+                    <Link
+                      className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 cursor-pointer "
+                      to="about"
+                      spy={true}
+                      smooth={true}
+                      offset={0}
+                      duration={500}
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      className="hover:opacity-50  border-gray-900  font-mono text-center  cursor-pointer"
+                      to="Contact"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      Contact Us
+                    </Link>
+                  </div>
+                )}
+              </li>
+              <li
+                className="hover:bg-gray-300 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-black border-gray-900 "
                 onMouseEnter={() => handleMouseEnter("student")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -106,7 +128,7 @@ export default function Navbar() {
                   Student
                 </NavLink>
                 {showStudentDropdown && (
-                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[28px] text-[19px] gap-2  bg-gray-700 text-white w-[135px] h-24 flex flex-col justify-center">
+                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[28px] text-[19px] gap-2  bg-gray-300 text-black w-[135px] h-24 flex flex-col justify-center">
                     <NavLink
                       className="hover:opacity-50 font-mono pb-2 border-b-[2.5px] border-gray-900 text-center"
                       to="/login-student"
@@ -123,7 +145,7 @@ export default function Navbar() {
                 )}
               </li>
               <li
-                className="hover:bg-gray-700  hover:outline-solid hover:border-2 rounded-lg border-gray-900 hover:text-gray-300 p-[10px] h-[44px]"
+                className="hover:bg-gray-300 hover:outline-solid hover:border-2 rounded-lg border-gray-900 hover:text-black p-[10px] h-[44px]"
                 onMouseEnter={() => handleMouseEnter("admin")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -131,7 +153,7 @@ export default function Navbar() {
                   Admin
                 </NavLink>
                 {showAdminDropdown && (
-                  <div className=" absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[32.5px] text-[19px] gap-2  bg-gray-700 text-white w-[130px] h-24 flex flex-col justify-center">
+                  <div className=" absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[32.5px] text-[19px] gap-2  bg-gray-300 text-black w-[130px] h-24 flex flex-col justify-center">
                     <NavLink
                       className="font-mono hover:opacity-50 text-center pb-2 border-b-[2.5px] border-gray-900 "
                       to="/login-admin"
@@ -149,28 +171,20 @@ export default function Navbar() {
               </li>
             </>
           ) : (
-            <>
-              <li
-                className=" p-[10px] h-[50px] bg-gray-700 rounded-[4px] hover:rounded-xl hover:outline-solid hover:border-2 border-gray-900 text-gray-300 "
-                onMouseEnter={() => handleMouseEnter("home")}
-                onMouseLeave={handleMouseLeave}
-              >
-                <NavLink
-                  className="font-mono hover:opacity-50 text-center"
-                  to="/"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
+            <div className="">
+              <li className="absolute">
+                <ProfileDropDown />
               </li>
-            </>
+              <li className="absolute">
+                <UserSettings />
+              </li>
+            </div>
           )}
 
-          {/* Accountant Dropdown */}
           {!auth.user ? (
             <>
               <li
-                className="hover:bg-gray-700 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-gray-300 border-gray-900 "
+                className="hover:bg-gray-300 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-black border-gray-900 "
                 onMouseEnter={() => handleMouseEnter("accountant")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -178,7 +192,7 @@ export default function Navbar() {
                   Accountant
                 </NavLink>
                 {showAccountantDropdown && (
-                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[32.5px] text-[19px] gap-2  bg-gray-700 text-white w-[130px] h-24 flex flex-col justify-center">
+                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[11.5px] text-[19px] gap-2  bg-gray-300 text-black w-[130px] h-24 flex flex-col justify-center">
                     <NavLink
                       className="font-mono hover:opacity-50 text-center pb-2 border-b-[2.5px] border-gray-900 "
                       to="/login-accountant"
@@ -197,7 +211,7 @@ export default function Navbar() {
 
               {/* Student Representative Dropdown */}
               <li
-                className="hover:bg-gray-700 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-gray-300 border-gray-900 "
+                className="hover:bg-gray-300 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-black border-gray-900 "
                 onMouseEnter={() => handleMouseEnter("studentRep")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -205,7 +219,7 @@ export default function Navbar() {
                   Student Representative
                 </NavLink>
                 {showStudentRepDropdown && (
-                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] -ml-[32.5px] text-[19px] gap-2  bg-gray-700 text-white w-[130px] h-24 flex flex-col justify-center">
+                  <div className="absolute outline-solid border-2 border-gray-900 mt-[4.5px] ml-[32.5px] text-[19px] gap-2  bg-gray-300 text-black w-40 h-[100px] flex flex-col justify-center">
                     <NavLink
                       className="font-mono hover:opacity-50 text-center pb-2 border-b-[2.5px] border-gray-900 "
                       to="/login-studentrep"
@@ -240,7 +254,7 @@ export default function Navbar() {
         >
           <img
             className="absolute -mt-[115px] -ml-8 w-[358px] h-[348px]"
-            src="/images/Api Artisans-logos_transparent.png"
+            src="/images/Api Artisans-logos_white.png"
             alt="Logo"
           />
           <Sidebar className="" />

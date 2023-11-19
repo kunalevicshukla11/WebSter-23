@@ -39,7 +39,7 @@ const UserSettings = () => {
   };
 
   return (
-    <div className="w-fit  -ml-[135px] -mt-8 flex items-center justify-center">
+    <div className="w-fit  -ml-[135px] -mt-6 flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}

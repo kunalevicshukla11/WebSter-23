@@ -7,8 +7,9 @@ import { useAuth } from "../context/userContext";
 import ProfileDropDown from "./ProfileDropdown";
 import UserSettings from "./UserSettings";
 import { Link } from "react-scroll";
+import { position } from "@chakra-ui/react";
 
-export default function Navbar() {
+export default function Navbar({ style }) {
   const [nav, setNav] = useState(false);
   const [showHomeDropdown, setShowHomeDropdown] = useState(false);
   const [showStudentDropdown, setShowStudentDropdown] = useState(false);
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [showAccountantDropdown, setShowAccountantDropdown] = useState(false);
   const [showStudentRepDropdown, setShowStudentRepDropdown] = useState(false);
   const [auth, setAuth] = useAuth();
+  const name = auth?.user?.name;
 
   const handleLogout = (e) => {
     localStorage.removeItem("auth");
@@ -46,9 +48,26 @@ export default function Navbar() {
     setShowStudentRepDropdown(false);
   };
 
+  const [scroll, setScroll] = useState(false);
+  const changeState = () => {
+    if (window.scrollY >= 70) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+  window.addEventListener("scroll", changeState);
   return (
-    <nav className="">
-      <div className=" fixed w-full mx-auto flex justify-between  items-center px-2 mt-0 h-28 pt-10 bg-indigo-800 border-l-[5px] border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[20px] bg-opacity-60 ">
+    <nav className={`top-0 left-0 w-full  text-white `} style={style}>
+      <div
+        className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 bg-${
+          scroll
+            ? " z-10 text-black h-24 bg-teal-600 bg-opacity-100 rounded-t-[90px] rounded-b-[90px] "
+            : "indigo-800 "
+        } border-l-[5px]  text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] bg-opacity-${
+          name == null ? 60 : 50
+        }`}
+      >
         <NavLink to="/">
           {nav ? (
             ""

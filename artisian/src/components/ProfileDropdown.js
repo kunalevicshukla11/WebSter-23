@@ -27,7 +27,7 @@ const ProfileDropDown = () => {
   const name = auth?.user?.name;
 
   return (
-    <div className="w-fit -ml-[350px] -mt-8    flex items-center justify-center">
+    <div className="w-fit -ml-[350px] -mt-6    flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}

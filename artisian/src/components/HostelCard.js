@@ -31,13 +31,22 @@ const HostelCard = ({ title, content }) => {
               </div>
 
               <div className="flex flex-col items-center justify-center gap-4 p-4">
+
                 <p className="text-3xl pt-4 text-orange-400 font-mono font-semibold">
                   {d.name}
                 </p>
                 <p className="text-center text-white">{d.about}</p>
+
                 <Link to={`/dashboard/${d.link}`}>
                   <GoInsideButton>Explore</GoInsideButton>
                 </Link>
+
+                <Link to={`/dashboard/${d.link}/expense`}>
+                  <button className="bg-indigo-500 text-white text-lg px-6 py-1 rounded-xl">
+                    Expenses
+                  </button>
+                </Link>
+
               </div>
             </div>
           ))}

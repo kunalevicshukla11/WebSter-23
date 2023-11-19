@@ -20,6 +20,8 @@ const Complaint = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const [newComment, setNewComment] = useState("");
+  const [votedStatus, setVotedStatus] = useState(0);
+  const [isBanned, setisBanned] = useState(false);
 
   const getComplaint = async () => {
     try {
@@ -27,6 +29,19 @@ const Complaint = () => {
         `http://localhost:4000/api/v1/comp/sigle-complaint/${id}`
       );
       setComplaint(res.data.comp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getBannedUser = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/auth/check-banned-user",
+        { userId: auth?.user?._id }
+      );
+      if (res?.data?.student) {
+        setisBanned(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +56,21 @@ const Complaint = () => {
       console.log(error);
     }
   };
+
+  const getVotedUser = async (e) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/vote/find-uservote",
+        { votedBy: auth?.user?._id, votedOn: id }
+      );
+
+      if (res?.data?.votedUser) {
+        setVotedStatus(res?.data?.votedUser?.vote);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     if (id) {
       getComplaint();
@@ -51,8 +81,10 @@ const Complaint = () => {
     if (complaint) {
       setTotalUpvotes(complaint?.upvote);
       setTotalDownvotes(complaint?.downvote);
+      getVotedUser();
+      getBannedUser();
     }
-  }, []);
+  }, [complaint]);
   useEffect(() => {
     if (complaint) {
       getComment();
@@ -74,6 +106,8 @@ const Complaint = () => {
 
   const handleNewComment = async (e) => {
     e.preventDefault();
+    if (isBanned) return;
+
     setNewComment(newcontent);
     try {
       const res = await axios.post(
@@ -84,6 +118,7 @@ const Complaint = () => {
       console.log(error);
     }
   };
+
   if (!complaint) {
     return (
       <>
@@ -91,6 +126,7 @@ const Complaint = () => {
       </>
     );
   }
+  
   if (!auth?.user) {
     return (
       <>
@@ -99,14 +135,107 @@ const Complaint = () => {
     );
   }
 
-  const handleUpvote = () => {
-    setTotalUpvotes(totalUpvote + 1);
-    console.log(totalUpvote);
+  const handleUpvote = async () => {
+    if (votedStatus === 0 || votedStatus === 2) {
+      try {
+        if (votedStatus === 0) {
+          const res = await axios.post(
+            "http://localhost:4000/api/v1/vote/new-vote",
+            { vote: 1, votedBy: auth?.user?._id, votedOn: id }
+          );
+        } else {
+          const res = await axios.put(
+            "http://localhost:4000/api/v1/vote/update-uservote",
+            { vote: 1, votedBy: auth?.user?._id, votedOn: id }
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      try {
+        if (votedStatus === 0) {
+          const compRes = await axios.put(
+            `http://localhost:4000/api/v1/comp/update-vote/${id}`,
+            {
+              totalUpvote: totalUpvote + 1,
+              totalDownvote: totalDownvote,
+            }
+          );
+          setTotalUpvotes(totalUpvote + 1);
+        } else {
+          const compRes = await axios.put(
+            `http://localhost:4000/api/v1/comp/update-vote/${id}`,
+            {
+              totalUpvote: totalUpvote + 1,
+              totalDownvote: totalDownvote === 0 ? 0 : totalDownvote - 1,
+            }
+          );
+          setTotalUpvotes(totalUpvote + 1);
+          setTotalDownvotes(totalDownvote === 0 ? 0 : totalDownvote - 1);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setVotedStatus(1);
   };
 
-  const handleDownvote = () => {
-    setTotalDownvotes(totalDownvote + 1);
-    console.log(totalDownvote);
+  const handleDownvote = async () => {
+    if (votedStatus === 0 || votedStatus === 1) {
+      try {
+        if (votedStatus === 0) {
+          const res = await axios.post(
+            "http://localhost:4000/api/v1/vote/new-vote",
+            { vote: 2, votedBy: auth?.user?._id, votedOn: id }
+          );
+        } else {
+          const res = await axios.put(
+            "http://localhost:4000/api/v1/vote/update-uservote",
+            { vote: 2, votedBy: auth?.user?._id, votedOn: id }
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      try {
+        if (votedStatus === 0) {
+          const compRes = await axios.put(
+            `http://localhost:4000/api/v1/comp/update-vote/${id}`,
+            {
+              totalUpvote: totalUpvote,
+              totalDownvote: totalDownvote + 1,
+            }
+          );
+          setTotalDownvotes(totalDownvote + 1);
+        } else {
+          const compRes = await axios.put(
+            `http://localhost:4000/api/v1/comp/update-vote/${id}`,
+            {
+              totalUpvote: totalUpvote === 0 ? 0 : totalUpvote - 1,
+              totalDownvote: totalDownvote + 1,
+            }
+          );
+          setTotalDownvotes(totalDownvote + 1);
+          setTotalUpvotes(totalUpvote === 0 ? 0 : totalUpvote - 1);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setVotedStatus(2);
+  };
+
+  const handleBan = async ({ commentedBy }) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/auth/ban-user",
+        { userId: commentedBy }
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -221,9 +350,27 @@ const Complaint = () => {
                 <div className="allcomment">
                   <div className="allcomment-content">
                     <p className="allcomment-author">
-                      Name: {val?.commentedBy?.name}
+                      Name:{" "}
+                      {val?.commentedBy?.name
+                        ? val.commentedBy.name
+                        : "Admin/Representative/Accountant"}
                     </p>
                     <p className="allcomment-text">Comment: {val?.content}</p>
+                    {auth?.user?.role === 4 ? (
+                      <button
+                        type="button"
+                        className="btn delete-btn"
+                        id={"banned"}
+                        style={{ marginBottom: "20px" }}
+                        onClick={() =>
+                          handleBan({ commentedBy: val?.commentedBy })
+                        }
+                      >
+                        Ban User
+                      </button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               </>

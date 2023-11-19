@@ -18,7 +18,7 @@ const Dashboard = () => {
   return (
     <>
       <img
-        className="absolute h-[750px] w-full"
+        className="absolute  h-full w-full"
         src="/images/dash.jpg"
         alt="dashboard bg"
       ></img>

@@ -226,7 +226,7 @@ export default function Navbar() {
         >
           <img
             className="absolute -mt-[115px] -ml-8 w-[358px] h-[348px]"
-            src="/images/Api Artisans-logos_transparent.png"
+            src="/images/Api Artisans-logos_white.png"
             alt="Logo"
           />
           <Sidebar className="" />

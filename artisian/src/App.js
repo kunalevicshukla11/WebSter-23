@@ -18,18 +18,13 @@ import Profile from "./pages/Profile";
 import RegisterComplaint from "./pages/RegisterComplaint";
 import RegisterAccountant from "./pages/Accountant/Register";
 import LoginAccountant from "./pages/Accountant/Login";
+
 import RegisterStudentRep from "./pages/StudentRep/Register";
 import LoginStudentRep from "./pages/StudentRep/Login";
-import RegisterAccountant from "./pages/Accountant/Register"
-import LoginAccountant from "./pages/Accountant/Login"
-import RegisterStudentRep from "./pages/StudentRep/Register"
-import LoginStudentRep from "./pages/StudentRep/Login"
-import TandonExpense from "./HotelExpense/TandonExpense"
-import TilakExpense from "./HotelExpense/TilakExpense"
-import MalviyaExpense from "./HotelExpense/MalviyaExpense"
-import PatelExpense from "./HotelExpense/PatelExpense"
-
-
+import TandonExpense from "./HotelExpense/TandonExpense";
+import TilakExpense from "./HotelExpense/TilakExpense";
+import MalviyaExpense from "./HotelExpense/MalviyaExpense";
+import PatelExpense from "./HotelExpense/PatelExpense";
 
 function App() {
   return (
@@ -49,30 +44,22 @@ function App() {
           <Route path="/signup-studentrep" element={<RegisterStudentRep />} />
           <Route path="/login-studentrep" element={<LoginStudentRep />} />
 
-
-    
-            
-         
-
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/dashboard/tandon" element={<Tandon />} />
-        <Route path="/dashboard/tilak" element={<Tilak />} />
-        <Route path="/dashboard/malviya" element={<Malviya />} />
-        <Route path="/dashboard/patel" element={<Patel />} />
+          <Route path="/dashboard/tandon" element={<Tandon />} />
+          <Route path="/dashboard/tilak" element={<Tilak />} />
+          <Route path="/dashboard/malviya" element={<Malviya />} />
+          <Route path="/dashboard/patel" element={<Patel />} />
 
-
-        <Route path="/dashboard/tandon/expense" element={<TandonExpense/>} />
-        <Route path="/dashboard/tilak/expense" element={<TilakExpense/>} />
-        <Route path="/dashboard/malviya/expense" element={<MalviyaExpense/>} />
-        <Route path="/dashboard/patel/expense" element={<PatelExpense/>} />
-
-        
-
-
-
+          <Route path="/dashboard/tandon/expense" element={<TandonExpense />} />
+          <Route path="/dashboard/tilak/expense" element={<TilakExpense />} />
+          <Route
+            path="/dashboard/malviya/expense"
+            element={<MalviyaExpense />}
+          />
+          <Route path="/dashboard/patel/expense" element={<PatelExpense />} />
 
           <Route path="/sigle-complaint/:compID" element={<Complaint />} />
           <Route path="/mess-menu" element={<Messmenu />} />

@@ -7,6 +7,7 @@ import { IoSettings } from "react-icons/io5";
 import { IoMdContacts } from "react-icons/io";
 import { FcAbout } from "react-icons/fc";
 import { AiOutlineHome } from "react-icons/ai";
+import { Link } from "react-scroll";
 const UserSettings = () => {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useAuth();
@@ -28,6 +29,12 @@ const UserSettings = () => {
   };
   const handleHome = () => {
     navigate("/");
+    setOpen(false);
+  };
+  const handleAboutUs = () => {
+    setOpen(false);
+  };
+  const handleContactUs = () => {
     setOpen(false);
   };
 
@@ -71,8 +78,28 @@ const UserSettings = () => {
             onClick={handleHome}
             text="Home"
           />
-          <Option setOpen={setOpen} Icon={FcAbout} text="About" />
-          <Option setOpen={setOpen} Icon={IoMdContacts} text="Contact Us" />
+          <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+            <Option
+              setOpen={setOpen}
+              Icon={FcAbout}
+              text="About"
+              onClick={handleAboutUs}
+            />
+          </Link>
+          <Link
+            to="Contact"
+            spy={true}
+            smooth={true}
+            offset={50}
+            duration={500}
+          >
+            <Option
+              setOpen={setOpen}
+              Icon={IoMdContacts}
+              text="Contact Us"
+              onClick={handleContactUs}
+            />
+          </Link>
         </motion.ul>
       </motion.div>
     </div>

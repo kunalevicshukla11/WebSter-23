@@ -6,6 +6,7 @@ import Sidebar from "./sidebar";
 import { useAuth } from "../context/userContext";
 import ProfileDropDown from "./ProfileDropdown";
 import UserSettings from "./UserSettings";
+import { Link } from "react-scroll";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -76,18 +77,26 @@ export default function Navbar() {
                 </NavLink>
                 {showHomeDropdown && (
                   <div className="absolute outline-solid border-2 border-gray-900 mt-[10.9px] -ml-[34px]  text-[19px] gap-2  bg-gray-300 text-black w-32 h-24 flex flex-col justify-center">
-                    <NavLink
-                      className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 "
-                      to="/about"
+                    <Link
+                      className=" hover:opacity-50 font-mono text-center pb-2 border-b-[2.5px] border-gray-900 cursor-pointer "
+                      to="about"
+                      spy={true}
+                      smooth={true}
+                      offset={0}
+                      duration={500}
                     >
                       About Us
-                    </NavLink>
-                    <NavLink
-                      className="hover:opacity-50  border-gray-900  font-mono text-center "
-                      to="/contact"
+                    </Link>
+                    <Link
+                      className="hover:opacity-50  border-gray-900  font-mono text-center  cursor-pointer"
+                      to="Contact"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
                     >
                       Contact Us
-                    </NavLink>
+                    </Link>
                   </div>
                 )}
               </li>

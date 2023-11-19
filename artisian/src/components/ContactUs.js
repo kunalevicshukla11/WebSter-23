@@ -70,7 +70,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative" id="Contact">
         <img
           className="h-[672px] w-full object-cover"
           src="/images/contactUS2.jpg"

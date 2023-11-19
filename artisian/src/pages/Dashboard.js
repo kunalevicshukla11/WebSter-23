@@ -3,7 +3,8 @@ import React from "react";
 import HostelCard from "../components/HostelCard";
 import { useAuth } from "../context/userContext";
 import Navbar from "../components/Navbar";
-
+import AboutUs from "../components/AboutUs";
+import ContactUs from "../components/ContactUs";
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
 
@@ -29,6 +30,8 @@ const Dashboard = () => {
           content="This is a simple card component."
         />
       </div>
+      <AboutUs />
+      <ContactUs />
     </>
   );
 };

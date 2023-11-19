@@ -6,7 +6,7 @@ import DottedButton from "./DottedButton";
 const AboutUs = () => {
   return (
     <>
-      <div className="w-full h-full">
+      <div className="w-full h-full" id="about">
         <div className="absolute flex flex-col">
           <h1 className="ml-4 text-[40px] mt-3 pl-2 pr-2 max-w-fit bg-teal-600 bg-opacity-40 text-gray-400">
             Who we are

@@ -4,12 +4,14 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/userContext";
 import RegisterComplaintWrapper from "../StyledComponents/RegisterComplaintWrapper.js";
+import { useToast } from "@chakra-ui/react";
 
 const RegisterComplaint = () => {
   const [auth, setAuth] = useAuth();
   const [name, setHostelName] = useState("");
   const [heading, setHeading] = useState("");
   const [content, setContent] = useState("");
+  const toast = useToast();
 
   if (!auth?.user) {
     return (
@@ -35,17 +37,23 @@ const RegisterComplaint = () => {
         "http://localhost:4000/api/v1/comp/new-complaint",
         { name, heading, content, student }
       );
-      console.log(res.data.message);
-      toast.success("Registered Successfully!");
-
-      if (res.data.success) {
-      } else {
-        toast(res.data.message);
-      }
+      toast({
+        title: `Registered Successfully!`,
+        description: "Success",
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+      });
     } catch (error) {
       const msg = error.response.data.message;
+      toast({
+        title: `${msg}`,
+        description: "Error!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
       console.log(error);
-      toast.error(msg);
     }
   };
 

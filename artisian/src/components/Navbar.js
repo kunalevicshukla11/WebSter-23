@@ -8,8 +8,9 @@ import ProfileDropDown from "./ProfileDropdown";
 import UserSettings from "./UserSettings";
 import { Link } from "react-scroll";
 import { position } from "@chakra-ui/react";
+import Dashbar from "./Dashbar";
 
-export default function Navbar({ style }) {
+export default function Navbar() {
   const [nav, setNav] = useState(false);
   const [showHomeDropdown, setShowHomeDropdown] = useState(false);
   const [showStudentDropdown, setShowStudentDropdown] = useState(false);
@@ -50,7 +51,7 @@ export default function Navbar({ style }) {
 
   const [scroll, setScroll] = useState(false);
   const changeState = () => {
-    if (window.scrollY >= 70) {
+    if (window.scrollY >= 38) {
       setScroll(true);
     } else {
       setScroll(false);
@@ -58,14 +59,14 @@ export default function Navbar({ style }) {
   };
   window.addEventListener("scroll", changeState);
   return (
-    <nav className={`top-0 left-0 w-full  text-white `} style={style}>
+    <nav className={`top-0 left-0 w-full  text-white `}>
       <div
-        className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 bg-${
+        className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 ${
           scroll
-            ? " z-10 text-black h-24 bg-teal-600 bg-opacity-100 rounded-t-[90px] rounded-b-[90px] "
-            : "indigo-500 "
-        } border-l-[5px]   text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] bg-opacity-${
-          name == null ? 80 : 60
+            ? " z-10 text-black h-24 bg-opacity-95  bg-teal-600  rounded-t-[90px] rounded-b-[90px] "
+            : "bg-indigo-500 z-10 bg-opacity-50 "
+        } border-l-[5px]   text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] ${
+          name == null && scroll ? "bg-opacity-90" : "bg-opacity-30"
         }`}
       >
         <NavLink to="/">
@@ -87,7 +88,7 @@ export default function Navbar({ style }) {
           {!auth.user ? (
             <>
               <li
-                className=" p-[10px] h-[50px] bg-gray-300 rounded-[4px] hover:rounded-xl hover:outline-solid hover:border-2 border-gray-900 text-black "
+                className=" p-[10px] h-[50px] bg-gray-300 border-2 rounded-[4px] hover:rounded-xl hover:outline-solid hover:border-2 border-gray-900 text-black "
                 onMouseEnter={() => handleMouseEnter("home")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -209,7 +210,6 @@ export default function Navbar({ style }) {
                 )}
               </li>
 
-              {/* Student Representative Dropdown */}
               <li
                 className="hover:bg-gray-300 p-[10px] h-[44px] rounded-md hover:outline-solid hover:border-2 pb-4 hover:text-black border-gray-900 "
                 onMouseEnter={() => handleMouseEnter("studentRep")}
@@ -242,22 +242,22 @@ export default function Navbar({ style }) {
         </ul>
         <div onClick={handleNav} className="block mr-4 a:hidden  ">
           {nav ? (
-            <AiOutlineCloseSquare className="hover:cursor-pointer h-[30px] w-[30px] " />
+            <AiOutlineCloseSquare className="hover:cursor-pointer -mt-[35px]  h-[30px] w-[30px] " />
           ) : (
-            <ImMenu className="hover:cursor-pointer h-[30px] w-[30px]" />
+            <ImMenu className="hover:cursor-pointer h-[30px] w-[30px] -mt-[35px]" />
           )}
         </div>
         <div
-          className={`fixed left-0 top-0 w-[60%] bg-stone-900 bg-opacity-80 text-xl bg-#067F8D  h-full border-r-2 border-black transition-transform duration-500 ease-in-out ${
+          className={`fixed left-0 top-0 w-[60%] bg-stone-900 bg-opacity-95 text-xl bg-#067F8D  h-full border-r-2 border-black transition-transform duration-500 ease-in-out ${
             !nav ? "-translate-x-full" : "translate-x-0"
           }`}
         >
           <img
-            className="absolute -mt-[115px] -ml-8 w-[358px] h-[348px]"
+            className="absolute -mt-[125px] -ml-8 w-[358px] h-[348px]"
             src="/images/Api Artisans-logos_white.png"
             alt="Logo"
           />
-          <Sidebar className="" />
+          {name == null ? <Sidebar className="" /> : <Dashbar />}
         </div>
       </div>
     </nav>

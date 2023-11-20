@@ -8,6 +8,7 @@ import AddCommentWrapper from "../StyledComponents/AddCommentWrapper.js";
 import AllCommentWrapper from "../StyledComponents/AllCommentsWrapper.js";
 import { useNavigate } from "react-router-dom";
 import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
+import { useToast } from "@chakra-ui/react";
 
 const Complaint = () => {
   const params = useParams();
@@ -22,6 +23,7 @@ const Complaint = () => {
   const [newComment, setNewComment] = useState("");
   const [votedStatus, setVotedStatus] = useState(0);
   const [isBanned, setisBanned] = useState(false);
+  const toast = useToast();
 
   const getComplaint = async () => {
     try {
@@ -93,6 +95,14 @@ const Complaint = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    toast({
+      title: `Logged Out!!`,
+      description: "Success",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
+
     setAuth({
       ...auth,
       user: null,
@@ -106,7 +116,17 @@ const Complaint = () => {
 
   const handleNewComment = async (e) => {
     e.preventDefault();
-    if (isBanned) return;
+    if (isBanned) {
+      toast({
+        title: `You Cant't comment you are banned!`,
+        description: "Comment",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+
+      return;
+    }
 
     setNewComment(newcontent);
     try {
@@ -114,7 +134,21 @@ const Complaint = () => {
         "http://localhost:4000/api/v1/comment/new-comment",
         { commentedBy: UserID, commentedOn: id, content: newcontent }
       );
+      toast({
+        title: `${res?.data?.message}`,
+        description: "Success",
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+      });
     } catch (error) {
+      toast({
+        title: `${error?.response?.data?.message}`,
+        description: "Comment",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+      });
       console.log(error);
     }
   };
@@ -126,7 +160,7 @@ const Complaint = () => {
       </>
     );
   }
-  
+
   if (!auth?.user) {
     return (
       <>
@@ -233,8 +267,24 @@ const Complaint = () => {
         "http://localhost:4000/api/v1/auth/ban-user",
         { userId: commentedBy }
       );
+      if (res?.data?.success) {
+        toast({
+          title: `${res?.data?.message}`,
+          description: "Success",
+          status: "success",
+          duration: 1000,
+          isClosable: true,
+        });
+      }
     } catch (error) {
       console.log(error);
+      toast({
+        title: `${error.response.data.message}`,
+        description: "Success",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+      });
     }
   };
 
@@ -356,7 +406,7 @@ const Complaint = () => {
                         : "Admin/Representative/Accountant"}
                     </p>
                     <p className="allcomment-text">Comment: {val?.content}</p>
-                    {auth?.user?.role === 4 ? (
+                    {auth?.user?.role === 4 && val?.commentedBy?.role === 2 ? (
                       <button
                         type="button"
                         className="btn delete-btn"

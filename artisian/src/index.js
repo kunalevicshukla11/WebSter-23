@@ -12,10 +12,10 @@ root.render(
   <AuthProvider>
     <Router>
       {/* <ColorModeScript /> */}
-      {/* <ChakraProvider theme={theme}> */}
-      {/* <ColorModeSwitcher /> */}
-      <App />
-      {/* </ChakraProvider> */}
+      <ChakraProvider disableGlobalStyle>
+        {/* <ColorModeSwitcher /> */}
+        <App />
+      </ChakraProvider>
     </Router>
   </AuthProvider>
 );

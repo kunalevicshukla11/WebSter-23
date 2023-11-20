@@ -20,7 +20,6 @@ const Dashboard = () => {
 
   return (
     <>
-
       <img
         className="absolute  h-full w-full"
         src="/images/dash.jpg"

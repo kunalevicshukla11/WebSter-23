@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import GoInsideButton from "./GoInsideButton";
+import AnimatedButton from "./AnimatedButton";
 const HostelCard = ({ title, content }) => {
   const settings = {
     dots: true,
@@ -31,22 +32,17 @@ const HostelCard = ({ title, content }) => {
               </div>
 
               <div className="flex flex-col items-center justify-center gap-4 p-4">
-
-                <p className="text-3xl pt-4 text-orange-400 font-mono font-semibold">
+                <p className="text-[28px] pt-3 text-orange-400 font-mono font-semibold">
                   {d.name}
                 </p>
-                <p className="text-center text-white">{d.about}</p>
 
                 <Link to={`/dashboard/${d.link}`}>
-                  <GoInsideButton>Explore</GoInsideButton>
+                  <GoInsideButton>Proceed</GoInsideButton>
                 </Link>
 
                 <Link to={`/dashboard/${d.link}/expense`}>
-                  <button className="bg-indigo-500 text-white text-lg px-6 py-1 rounded-xl">
-                    Expenses
-                  </button>
+                  <AnimatedButton className="">Expenses</AnimatedButton>
                 </Link>
-
               </div>
             </div>
           ))}

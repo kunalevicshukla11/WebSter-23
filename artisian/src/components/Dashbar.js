@@ -10,7 +10,7 @@ import {
 import { NavLink } from "react-router-dom";
 import { Stack } from "@chakra-ui/react";
 
-const Sidebar = () => {
+const Dashbar = () => {
   return (
     <Box pt={128} className="" position="relative" h="100vh">
       <Accordion defaultIndex={[0]} allowMultiple="true" allowToggle>
@@ -148,4 +148,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Dashbar;

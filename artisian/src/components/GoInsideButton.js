@@ -23,6 +23,7 @@ const StyledButton = styled.button`
     position: absolute;
     left: 0;
     top: 0;
+
     height: 100%;
     width: 97%;
     background: linear-gradient(

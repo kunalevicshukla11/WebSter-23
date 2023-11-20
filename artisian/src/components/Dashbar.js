@@ -32,7 +32,7 @@ const Dashbar = () => {
       <Accordion defaultIndex={[0]} allowMultiple="true" allowToggle>
         <AccordionItem mr={50} pb={4}>
           <h2>
-            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "tomato", color: "white" }}>
               <Box flex="1" textAlign="left" ml={4}>
                 <NavLink className="text-2xl" to="">
                   Links
@@ -81,7 +81,7 @@ const Dashbar = () => {
 
         <AccordionItem mr={50} pb={4}>
           <h2>
-            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "tomato", color: "white" }}>
               <Box flex="1" textAlign="left">
                 <NavLink className="text-2xl" to="">
                   Settings

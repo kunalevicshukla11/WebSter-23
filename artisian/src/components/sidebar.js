@@ -96,13 +96,13 @@ const Sidebar = () => {
             <Stack>
               <NavLink
                 className="text-slate-400 hover:text-opacity-70 text-2xl"
-                to="/login-student-rep"
+                to="/login-student-ep"
               >
                 Login
               </NavLink>
               <NavLink
                 className="text-slate-400 hover:text-opacity-70 text-2xl"
-                to="/signup-student-rep"
+                to="/signup-studentrep"
               >
                 Sign Up
               </NavLink>

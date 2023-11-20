@@ -76,15 +76,15 @@ const ContactUs = () => {
           src="/images/contactUS2.jpg"
           alt="Contact Us-image"
         />
-        <div className="   absolute inset-0 flex flex-col max-w-screen ">
-          <div className="flex ">
-            <p className="  font-bold ml-4 w-[320px] mt-36 text-white text-5xl">
+        <div className="absolute inset-0 flex flex-col ">
+          <div className="flex justify-evenly">
+            <p className="left-0 absolute  font-bold ml-4 w-[320px] mt-36 text-white text-5xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt
             </p>
-            <div className="mt-[100px] pl-16">
+            <div className="mt-[100px]">
               <p className=" text-white font-bold text-6xl">We work for you</p>
-              <p className="flex mt-4 w-[550px] ml-[3px]  text-3xl text-white font-bold font-sans mx-auto">
+              <div className="flex mt-4 w-[550px] ml-[3px]  text-3xl text-white font-bold font-sans mx-auto">
                 Follow Us :
                 <div className="flex -mt-[1px] ml-6 opacity-50 gap-4">
                   <FaInstagram
@@ -148,11 +148,19 @@ const ContactUs = () => {
                     size={40}
                   />
                 </div>
-              </p>
+              </div>
             </div>
           </div>
-          <div className="self-end mr-4 -mt-[174px] items-center justify-center">
-            <Contact className="bg-white p-4 rounded-md" />
+          <div className="self-end mr-4   items-center justify-center">
+            <Contact className=" " />
+          </div>
+          <div className="flex justify-evenly bg-zinc-950  pt-3 text-white font-mono text-md xl:text-2xl mt-12 ">
+            <p className=" text-white font-mono font-bold cursor-pointer  hover:opacity-75">
+              Copyright © 2023 Your Company Name. All Rights Reserved
+            </p>
+            <p className="cursor-pointer hover:opacity-75 ">Terms of Service</p>
+            <p className="cursor-pointer hover:opacity-75 ">Privacy Policy</p>
+            <p className="cursor-pointer hover:opacity-75 ">Cookies</p>
           </div>
         </div>
       </div>

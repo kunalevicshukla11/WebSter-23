@@ -9,6 +9,7 @@ import UserSettings from "./UserSettings";
 import { Link } from "react-scroll";
 import { position } from "@chakra-ui/react";
 import Dashbar from "./Dashbar";
+
 export default function Navbar() {
   const [nav, setNav] = useState(false);
   const [showHomeDropdown, setShowHomeDropdown] = useState(false);
@@ -247,7 +248,7 @@ export default function Navbar() {
           )}
         </div>
         <div
-          className={`fixed left-0 top-0 w-[60%] bg-stone-900 bg-opacity-80 text-xl bg-#067F8D  h-full border-r-2 border-black transition-transform duration-500 ease-in-out ${
+          className={`fixed left-0 top-0 w-[60%] bg-stone-900 bg-opacity-95 text-xl bg-#067F8D  h-full border-r-2 border-black transition-transform duration-500 ease-in-out ${
             !nav ? "-translate-x-full" : "translate-x-0"
           }`}
         >

@@ -30,7 +30,7 @@ const Contact = () => {
   return (
     <>
       <div className="relative grid">
-        <div className=" -mt-[148px] ml-48 mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
+        <div className="  mr-4 w-[350px]  flex flex-col items-center text-center mx-auto bg-transparent text-gray-800 ">
           <h2 className="text-4xl  text-white font-bold tracking-wider">
             Reach Out Here
           </h2>
@@ -66,18 +66,6 @@ const Contact = () => {
               Send
             </DottedButton>
           </form>
-        </div>
-        <div className="flex justify-evenly fixed bottom-0 left-0 w-full bg-black opacity-50 text-white p-4 h-[60px] ">
-          <p className=" text-2xl text-white font-mono font-bold cursor-pointer hover:opacity-75">
-            Copyright © 2023 Your Company Name. All Rights Reserved
-          </p>
-          <p className="cursor-pointer hover:opacity-75 text-2xl">
-            Terms of Service
-          </p>
-          <p className="cursor-pointer hover:opacity-75 text-2xl">
-            Privacy Policy
-          </p>
-          <p className="cursor-pointer hover:opacity-75 text-2xl">Cookies</p>
         </div>
       </div>
     </>

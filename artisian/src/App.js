@@ -25,6 +25,11 @@ import TandonExpense from "./HotelExpense/TandonExpense";
 import TilakExpense from "./HotelExpense/TilakExpense";
 import MalviyaExpense from "./HotelExpense/MalviyaExpense";
 import PatelExpense from "./HotelExpense/PatelExpense";
+import TandonMess from "./pages/MessMenu/TandonMess";
+import MalviyaMess from "./pages/MessMenu/MalviyaMess";
+import TilakMess from "./pages/MessMenu/TilakMess";
+import PatelMess from "./pages/MessMenu/PatelMess";
+import AddAndUpdateMessMenu from "./pages/AddAndUpdateMessMenu";
 
 function App() {
   return (
@@ -52,6 +57,12 @@ function App() {
           <Route path="/dashboard/tilak" element={<Tilak />} />
           <Route path="/dashboard/malviya" element={<Malviya />} />
           <Route path="/dashboard/patel" element={<Patel />} />
+
+          <Route path="/mess-menu/tandon" element={<TandonMess />} />
+          <Route path="/mess-menu/patel" element={<PatelMess />} />
+          <Route path="/mess-menu/malviya" element={<MalviyaMess />} />
+          <Route path="/mess-menu/tilak" element={<TilakMess />} />
+          <Route path="/update-mess-menu" element={<AddAndUpdateMessMenu />} />
 
           <Route path="/dashboard/tandon/expense" element={<TandonExpense />} />
           <Route path="/dashboard/tilak/expense" element={<TilakExpense />} />

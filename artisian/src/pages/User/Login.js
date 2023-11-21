@@ -51,9 +51,7 @@ const Login = () => {
         duration: 9000,
         isClosable: true,
       });
-      const msg = error.response.data.message;
       console.log(error);
-      toast.error(msg);
     }
   };
 

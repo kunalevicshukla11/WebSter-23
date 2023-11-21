@@ -63,7 +63,7 @@ export default function Navbar() {
       <div
         className={`fixed w-full mx-auto flex justify-between items-center px-2 mt-0 h-[100px] pt-10 ${
           scroll
-            ? " z-10 text-black h-24 bg-opacity-95  bg-teal-600  rounded-t-[90px] rounded-b-[90px] "
+            ? " z-20 text-black h-24 bg-opacity-95  bg-cyan-600  rounded-t-[90px] rounded-b-[90px] "
             : "bg-indigo-500 z-10 bg-opacity-50 "
         } border-l-[5px]   text-black  border-r-[5px] border-b-[5px] border-t-[4px] border-black rounded-b-[90px] ${
           name == null && scroll ? "bg-opacity-90" : "bg-opacity-30"

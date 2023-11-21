@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { MdDoubleArrow } from "react-icons/md";
+import { GiReceiveMoney } from "react-icons/gi";
 const StyledButton = styled.button`
   position: relative;
   background: none;
@@ -23,13 +23,12 @@ const StyledButton = styled.button`
     position: absolute;
     left: 0;
     top: 0;
-
     height: 100%;
     width: 97%;
     background: linear-gradient(
       to right,
-      #ff9900,
-      #ff6600
+      #bb9007,
+      #faa800
     ); /* Adjust gradient colors */
     border-top-left-radius: 15px; /* Adjust the border radius as needed */
     border-bottom-left-radius: 15px;
@@ -50,8 +49,8 @@ const StyledButton = styled.button`
 
 const Arrow = styled.span`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 9px;
 `;
 
 const GoInsideButton = ({ children }) => {
@@ -59,7 +58,7 @@ const GoInsideButton = ({ children }) => {
     <StyledButton className="explore">
       {children}
       <Arrow>
-        <MdDoubleArrow className="icon-right"></MdDoubleArrow>
+        <GiReceiveMoney className="icon-right" size={35}></GiReceiveMoney>
       </Arrow>
     </StyledButton>
   );

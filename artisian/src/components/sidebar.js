@@ -8,11 +8,12 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-scroll";
 import { Stack } from "@chakra-ui/react";
 
 const Sidebar = () => {
   return (
-    <Box pt={128} position="relative" h="100vh">
+    <Box pt={128} className="" position="relative" h="100vh">
       <Accordion defaultIndex={[0]} allowMultiple="true" allowToggle>
         <AccordionItem mr={50} pb={4}>
           <h2>
@@ -27,12 +28,26 @@ const Sidebar = () => {
           </h2>
           <AccordionPanel fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack ml={2}>
-              <NavLink className="text-slate-400 text-2xl" to="/">
+              <Link
+                className="text-slate-400 hover:cursor-pointer  hover:text-opacity-70 text-2xl"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
                 About Us
-              </NavLink>
-              <NavLink className="text-slate-400 text-2xl" to="/">
+              </Link>
+              <Link
+                className="text-slate-400 hover:text-opacity-70 text-2xl hover:cursor-pointer"
+                to="Contact"
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
                 Contact Us
-              </NavLink>
+              </Link>
             </Stack>
           </AccordionPanel>
         </AccordionItem>
@@ -50,17 +65,22 @@ const Sidebar = () => {
           </h2>
           <AccordionPanel ml={2} fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack>
-              <NavLink className="text-slate-400 text-2xl" to="/login-student">
+              <NavLink
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/login-student"
+              >
                 Login
               </NavLink>
-              <NavLink className="text-slate-400 text-2xl" to="/signup-student">
+              <NavLink
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/signup-student"
+              >
                 Sign Up
               </NavLink>
             </Stack>
           </AccordionPanel>
         </AccordionItem>
 
-        {/* Student Representative Section */}
         <AccordionItem mr={50} pb={4}>
           <h2>
             <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
@@ -75,14 +95,14 @@ const Sidebar = () => {
           <AccordionPanel ml={2} fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack>
               <NavLink
-                className="text-slate-400 text-2xl"
-                to="/login-student-rep"
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/login-student-ep"
               >
                 Login
               </NavLink>
               <NavLink
-                className="text-slate-400 text-2xl"
-                to="/signup-student-rep"
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/signup-studentrep"
               >
                 Sign Up
               </NavLink>
@@ -90,7 +110,6 @@ const Sidebar = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        {/* Accountant Section */}
         <AccordionItem mr={50} pb={4}>
           <h2>
             <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
@@ -105,13 +124,13 @@ const Sidebar = () => {
           <AccordionPanel ml={2} fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack>
               <NavLink
-                className="text-slate-400 text-2xl"
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
                 to="/login-accountant"
               >
                 Login
               </NavLink>
               <NavLink
-                className="text-slate-400 text-2xl"
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
                 to="/signup-accountant"
               >
                 Sign Up
@@ -120,7 +139,6 @@ const Sidebar = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        {/* Admin Section */}
         <AccordionItem mr={50} mt={0}>
           <h2>
             <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
@@ -134,10 +152,16 @@ const Sidebar = () => {
           </h2>
           <AccordionPanel ml={2} fontWeight={"extrabold"} fontSize={20}>
             <Stack>
-              <NavLink className="text-slate-400 text-2xl" to="/login-admin">
+              <NavLink
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/login-admin"
+              >
                 Login
               </NavLink>
-              <NavLink className="text-slate-400 text-2xl" to="/signup-admin">
+              <NavLink
+                className="text-slate-400 hover:text-opacity-70 text-2xl"
+                to="/signup-admin"
+              >
                 Sign Up
               </NavLink>
             </Stack>

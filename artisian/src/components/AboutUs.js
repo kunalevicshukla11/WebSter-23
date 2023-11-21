@@ -7,7 +7,7 @@ const AboutUs = () => {
     <>
       <div className="w-full h-full -z-10" id="about">
         <div className="absolute flex flex-col">
-          <h1 className="ml-4 text-[40px] mt-3 pl-2 pr-2 max-w-fit bg-cyan-700 rounded-md text-gray-900">
+          <h1 className="ml-4 text-[40px] mt-3 pl-2 pr-2 font-mono max-w-fit bg-cyan-700 rounded-md text-gray-900">
             Who we are
           </h1>
 
@@ -24,7 +24,7 @@ const AboutUs = () => {
             <div className="flex w-24 h-24 bg-gray-300 rounded-sm overflow-hidden ">
               <HiUser
                 alt="Team Member 1"
-                className="bg-zinc-500 w-full h-full border-2 border-black object-cover"
+                className="bg-zinc-500 w-full h-full border-2  border-black object-cover"
               />
               <h1 className="absolute xl:ml-32  bg-cyan-700 rounded-md border-black border-2 mt-[104px]  xl:mt-2  text-black text-[35px] xl:text-[40px]  xl:font-bold font-serif xl:p-2">
                 Suhas

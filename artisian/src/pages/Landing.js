@@ -15,12 +15,12 @@ export default function Landing() {
             src="/images/backg.png"
             alt="background-image"
           />
-          <div className=" absolute mt-[300px] ml-4  text-md sm:text-xl md:text-2xl  lg:text-3xl font-bold  text-gray-400">
+          <div className=" absolute mt-[300px] ml-4 text-md sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-300">
             <TypeAnimation
               sequence={[
                 "Well Hello There",
                 1000,
-                "Welcome To The Mess Complaint Portal",
+                "Welcome To The Mess Complaint PortaL",
                 1000,
                 "Let's Dive Into !",
                 1200,
@@ -29,6 +29,7 @@ export default function Landing() {
               speed={50}
               style={{ fontSize: "2em", display: "inline-block" }}
               repeat={Infinity}
+              className=""
             />
           </div>
         </div>

@@ -3,9 +3,9 @@ import { FaLink } from "react-icons/fa";
 
 const Example = ({ children }) => {
   return (
-    <div className="flex place-content-center">
+    <div className="flex absolute  mt-[380px] place-content-center">
       <DrawOutlineButton className="">{children}</DrawOutlineButton>
-      <FaLink className=" mt-[8px] -ml-[24px]" />
+      <FaLink className=" mt-[18px] -ml-[26px]" size={20} />
     </div>
   );
 };
@@ -14,7 +14,7 @@ const DrawOutlineButton = ({ children, ...rest }) => {
   return (
     <button
       {...rest}
-      className="group relative pl-2 pr-8 py-2 font-medium text-white transition-colors duration-[400ms] hover:text-blue-500"
+      className="group relative text-3xl pl-2 pr-8 py-2 font-medium text-gray-400 transition-colors duration-[400ms] hover:text-blue-500"
     >
       <span>{children}</span>
 

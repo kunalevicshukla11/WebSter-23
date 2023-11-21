@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import toast from "react-hot-toast";
+import { useTab, useToast } from "@chakra-ui/react";
 
 import { useAuth } from "../../context/userContext";
 
@@ -13,6 +13,7 @@ const Login = () => {
   const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,16 +31,24 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        toast.success(res.data.message);
+        toast({
+          title: `Login Success!`,
+          description: "Success",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         navigate("/dashboard");
-      } else {
-        toast.error(res.data.message);
       }
     } catch (error) {
       const msg = error.response.data.message;
-      toast.error(msg);
-      console.log(error);
-      toast.error(msg);
+      toast({
+        title: `${msg}`,
+        description: "Error",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

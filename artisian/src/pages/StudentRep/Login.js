@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 
 import { useAuth } from "../../context/userContext";
@@ -13,6 +13,7 @@ const Login = () => {
   const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,22 +24,31 @@ const Login = () => {
         { email, password }
       );
 
-      if (res.data.success) {
+      if (res?.data?.success) {
         setAuth({
           ...auth,
-          user: res.data.user,
-          token: res.data.token,
+          user: res?.data?.user,
+          token: res?.data?.token,
         });
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        toast.success(res.data.message);
+        localStorage.setItem("auth", JSON.stringify(res?.data));
+        toast({
+          title: `Login Successful`,
+          description: "Success",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         navigate("/dashboard");
-      } else {
-        navigate("/");
       }
     } catch (error) {
       const msg = error.response.data.message;
-      console.log(error);
-      toast.error(msg);
+      toast({
+        title: `${msg}`,
+        description: "Error",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

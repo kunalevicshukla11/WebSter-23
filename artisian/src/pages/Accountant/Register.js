@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 
 const Register = () => {
@@ -13,6 +13,7 @@ const Register = () => {
   const [HostelID, setHostelID] = useState();
   const [HostelName, setHostelName] = useState("");
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,13 +24,24 @@ const Register = () => {
       );
 
       if (res.data.success) {
-        toast.success(res.data.message);
+        toast({
+          title: `Registered Successfully`,
+          description: "Redirecting..",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         navigate("/login-accountant");
       }
     } catch (error) {
       const msg = error.response.data.message;
-      console.log(error);
-      toast.error(msg);
+      toast({
+        title: `${msg}`,
+        description: "Error!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

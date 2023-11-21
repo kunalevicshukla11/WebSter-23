@@ -25,30 +25,28 @@ const Login = () => {
         { email, password }
       );
 
-      if (res.data.success) {
+      if (res?.data?.success) {
         setAuth({
           ...auth,
-          user: res.data.user,
-          token: res.data.token,
+          user: res?.data?.user,
+          token: res?.data?.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
         toast({
           title: `Login success!!`,
           description: "Success",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
         });
         navigate("/dashboard");
-      } else {
-        navigate("/");
       }
     } catch (error) {
       toast({
         title: `${error.response.data.message}`,
         description: "Error!",
         status: "error",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
       });
       console.log(error);

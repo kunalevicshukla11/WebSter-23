@@ -13,6 +13,10 @@ import {
   unbanUser,
   checkBannedUser,
 } from "../controllers/authController.js";
+import {
+  createMessMenu,
+  getMessmenu,
+} from "../controllers/messMenuController.js";
 
 const router = express.Router();
 
@@ -37,5 +41,12 @@ router.delete("/unban-user", unbanUser);
 //check-banned-user
 
 router.post("/check-banned-user", checkBannedUser);
+
+//add mess menu..
+router.post("/new-mess-menu", createMessMenu);
+
+//get-mess-menu
+
+router.post("/get-mess-menu", getMessmenu);
 
 export default router;

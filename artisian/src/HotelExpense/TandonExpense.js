@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../context/userContext";
-import ExpensePage from "../utils/ExpensePage";
+import ExpenseUtils from "./ExpenseUtils";
 
 const TandonExpense = () => {
   const HostelName = "Tandon";
@@ -12,9 +12,12 @@ const TandonExpense = () => {
       </>
     );
   }
+  if (auth?.user?.role !== 3) {
+    return <h1>You do not have permission to this page...</h1>;
+  }
   return (
     <>
-      <ExpensePage HostelName={HostelName} />
+      <ExpenseUtils HostelName={HostelName} />
     </>
   );
 };

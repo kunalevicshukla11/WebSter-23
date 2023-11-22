@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiChevronDown, FiEdit, FiPlusSquare } from "react-icons/fi";
+import { CiLogout } from "react-icons/ci";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/userContext";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, useLocation } from "react-router-dom";
 import { IoSettings } from "react-icons/io5";
 import { IoMdContacts } from "react-icons/io";
 import { FcAbout } from "react-icons/fc";
@@ -10,8 +11,19 @@ import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-scroll";
 const UserSettings = () => {
   const [open, setOpen] = useState(false);
+  const [home, setHome] = useState(false);
   const [auth, setAuth] = useAuth();
-  const navigate = useNavigate(); // Use useNavigate for navigation
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the current location is "/"
+    if (location.pathname === "/") {
+      setHome(true);
+    } else {
+      setHome(false);
+    }
+  }, [location.pathname]); // Update when the location changes
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
@@ -28,7 +40,13 @@ const UserSettings = () => {
     setOpen(false);
   };
   const handleHome = () => {
-    navigate("/");
+    // Check if already on "Home", navigate to "/dashboard"
+    if (home) {
+      navigate("/dashboard");
+    } else {
+      setHome(true);
+      navigate("/");
+    }
     setOpen(false);
   };
   const handleAboutUs = () => {
@@ -37,7 +55,9 @@ const UserSettings = () => {
   const handleContactUs = () => {
     setOpen(false);
   };
+
   const [scroll, setScroll] = useState(false);
+
   const changeState = () => {
     if (window.scrollY >= 38) {
       setScroll(true);
@@ -82,23 +102,16 @@ const UserSettings = () => {
           />
           <Option
             setOpen={setOpen}
-            Icon={FiPlusSquare}
-            text="Logout"
-            onClick={handleLogout}
-            scroll={scroll}
-          />
-          <Option
-            setOpen={setOpen}
             Icon={AiOutlineHome}
             onClick={handleHome}
-            text="Home"
+            text={home ? "Dashboard" : "Home"}
             scroll={scroll}
           />
           <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
             <Option
               setOpen={setOpen}
               Icon={FcAbout}
-              text="About"
+              text="About Us"
               onClick={handleAboutUs}
               scroll={scroll}
             />
@@ -118,6 +131,13 @@ const UserSettings = () => {
               scroll={scroll}
             />
           </Link>
+          <Option
+            setOpen={setOpen}
+            Icon={CiLogout}
+            text="Logout"
+            onClick={handleLogout}
+            scroll={scroll}
+          />
         </motion.ul>
       </motion.div>
     </div>

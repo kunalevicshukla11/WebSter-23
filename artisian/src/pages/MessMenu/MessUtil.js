@@ -6,8 +6,12 @@ import { useToast } from "@chakra-ui/react";
 
 const MessUtil = ({ HostelName, Data }) => {
   const [auth, setAuth] = useAuth();
+
   const navigate = useNavigate();
   const toast = useToast();
+  if (!auth?.user) {
+    return <h1>Please Login to access this page</h1>;
+  }
   const arr = [
     "Sunday",
     "Monday",
@@ -39,20 +43,28 @@ const MessUtil = ({ HostelName, Data }) => {
   return (
     <div>
       <div style={{ backgroundColor: "#023942", height: "55px" }}>
-        <button
-          className="btn edit-btn"
-          style={{
-            marginLeft: "17px",
-            marginBottom: "10px",
-            marginTop: "10px",
-            marginRight: "17px",
-          }}
-        >
-          Edit Mess Menu
-        </button>
+        {auth?.user?.role === 1 ? (
+          <button
+            className="btn edit-btn"
+            style={{
+              marginLeft: "17px",
+              marginBottom: "10px",
+              marginTop: "10px",
+              marginRight: "17px",
+            }}
+          >
+            Edit Mess Menu
+          </button>
+        ) : (
+          <></>
+        )}
         <button
           className="btn delete-btn"
-          style={{ backgroundColor: "#f7b0cc" }}
+          style={{
+            backgroundColor: "#f7b0cc",
+            marginTop: "10px",
+            marginLeft: "17px",
+          }}
           onClick={handleClick}
         >
           Logout

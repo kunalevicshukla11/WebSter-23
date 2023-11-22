@@ -1,9 +1,9 @@
-// import React from "react";
+import React from "react";
 // import { useEffect } from "react";
 // import { useState } from "react";
 // import axios from "axios";
 // import { Link, useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/userContext.js";
+import { useAuth } from "../context/userContext.js";
 
 // import Exp from "../utils/Exp.js"
 
@@ -24,9 +24,6 @@
 //     HostelName= "tandon"
 //   }
 
-
-
-
 //   const handleClick = (e) => {
 //     e.preventDefault();
 //     setAuth({
@@ -39,14 +36,12 @@
 //     navigate("/");
 //   };
 
-
 //   const getExpense = async () => {
 //     const { data } = await axios.get(
 //       `http://localhost:4000/api/v1/exp/all-expense/${HostelName}`
 //     );
 //     setExpData(data.exp);
 //   };
-
 
 //   return (
 //     <div>
@@ -56,3 +51,14 @@
 // }
 
 // export default ExpensePage
+
+const ExpensePage = () => {
+  const [auth, setAuth] = useAuth();
+
+  if (auth?.user?.role !== 3) {
+    return <h1>You Do not have Permission to this page..</h1>;
+  }
+  return <div>Expense</div>;
+};
+
+export default ExpensePage;

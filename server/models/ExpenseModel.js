@@ -1,84 +1,43 @@
 import mongoose from "mongoose";
 
 const ExpenseSchema = new mongoose.Schema({
-    HostelID: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Accountant",
-        required: true,
-    },
-    HostelName: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Accountant",
-        required: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        required: true,
-    },
+  HostelName: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: [true, "Title is required"],
+  },
 
-    content: {
-        type: String,
-        required: true,
-        minlength: 20,
-    },
+  amount: {
+    type: Number,
+    required: [true, "Amount is required"],
+    default: 0,
+  },
 
-    vegetables: {
-        type: Number,
-        required: true,
-    },
+  category: {
+    type: String,
+    required: [true, "Category is required"],
+  },
 
-    Panner: {
-        type: Number,
-        required: true,
-    },
+  description: {
+    type: String,
+    required: [true, "Description is required"],
+  },
+  transactionType: {
+    type: String,
+    required: [true, "Transaction Type is required"],
+  },
 
-    Milk: {
-        type: Number,
-        required: true,
-    },
-
-    Gas: {
-        type: Number,
-        required: true,
-    },
-
-    Rice: {
-        type: Number,
-        required: true,
-    },
-
-    Wheat: {
-        type: Number,
-        required: true,
-    },
-
-
-    Worker_Salary: {
-        type: Number,
-        required: true,
-    },
-
-    Oil: {
-        type: Number,
-        required: true,
-    },
-
-    Ice_cream: {
-        type: Number,
-        required: true,
-    },
-
-    Miscellaneous: {
-        type: Number,
-        required: true,
-    },
-
-    Utensils: {
-        type: Number,
-        required: true,
-    },
-
-})
+  date: {
+    type: Date,
+    required: [true, "Date is required"],
+  },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
+});
 
 export const ExpenseModel = mongoose.model("Expense", ExpenseSchema);

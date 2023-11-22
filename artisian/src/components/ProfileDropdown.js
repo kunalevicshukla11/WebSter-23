@@ -84,7 +84,7 @@ const Option = ({ text, Icon, setOpen, onClick, scroll }) => {
         setOpen(false);
         onClick();
       }}
-      className={`flex items-center gap-2 w-full p-2 text-lg font-medium whitespace-nowrap rounded-md ${
+      className={`flex  gap-2 w-full p-2 text-lg font-medium  rounded-md ${
         scroll
           ? "hover:bg-yellow-100 hover:text-black"
           : "hover:bg-indigo-100 hover:text-indigo-500"

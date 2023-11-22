@@ -37,13 +37,26 @@ const UserSettings = () => {
   const handleContactUs = () => {
     setOpen(false);
   };
+  const [scroll, setScroll] = useState(false);
+  const changeState = () => {
+    if (window.scrollY >= 38) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+  window.addEventListener("scroll", changeState);
 
   return (
-    <div className="w-fit  -ml-[135px] -mt-6 flex items-center justify-center">
+    <div className="w-fit  -ml-[135px]  -mt-6 flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className="flex items-center gap-2 px-3 py-2 rounded-md text-indigo-50 bg-indigo-500 hover:bg-indigo-800 transition-colors"
+          className={`flex items-center gap-2 px-3 py-2 rounded-md  ${
+            scroll
+              ? "bg-yellow-500 hover:bg-yellow-600   text-black  border-black border-2 "
+              : "bg-indigo-500 text-indigo-50 hover:bg-indigo-800"
+          } transition-colors`}
         >
           <span className="font-medium text-xl">Settings</span>
           <motion.span
@@ -65,18 +78,21 @@ const UserSettings = () => {
             Icon={FiEdit}
             text="Edit Profile"
             onClick={handleEdit}
+            scroll={scroll}
           />
           <Option
             setOpen={setOpen}
             Icon={FiPlusSquare}
             text="Logout"
             onClick={handleLogout}
+            scroll={scroll}
           />
           <Option
             setOpen={setOpen}
             Icon={AiOutlineHome}
             onClick={handleHome}
             text="Home"
+            scroll={scroll}
           />
           <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
             <Option
@@ -84,6 +100,7 @@ const UserSettings = () => {
               Icon={FcAbout}
               text="About"
               onClick={handleAboutUs}
+              scroll={scroll}
             />
           </Link>
           <Link
@@ -98,6 +115,7 @@ const UserSettings = () => {
               Icon={IoMdContacts}
               text="Contact Us"
               onClick={handleContactUs}
+              scroll={scroll}
             />
           </Link>
         </motion.ul>
@@ -106,7 +124,7 @@ const UserSettings = () => {
   );
 };
 
-const Option = ({ text, Icon, setOpen, onClick }) => {
+const Option = ({ text, Icon, setOpen, onClick, scroll }) => {
   return (
     <motion.li
       variants={itemVariants}
@@ -114,7 +132,11 @@ const Option = ({ text, Icon, setOpen, onClick }) => {
         setOpen(false);
         onClick();
       }}
-      className="flex items-center gap-2 w-full p-2 text-lg whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
+      className={`flex items-center gap-2 w-full p-2 text-lg whitespace-nowrap rounded-md  ${
+        scroll
+          ? "hover:bg-yellow-100 hover:text-black"
+          : "hover:bg-indigo-100 hover:text-indigo-500"
+      }  text-slate-700 transition-colors cursor-pointer`}
     >
       <motion.span variants={actionIconVariants}>
         <Icon size={25} />

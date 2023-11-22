@@ -27,7 +27,7 @@ const HostelCard = ({ title, content }) => {
                 <img
                   src={d.img}
                   alt=""
-                  className="h-[250px] w-[300px] object-bottom rounded-3xl rounded-t-none border-8  border-black"
+                  className="h-[250px] w-[300px] object-bottom rounded-3xl rounded-t-none border-4 border-black "
                 />
               </div>
 

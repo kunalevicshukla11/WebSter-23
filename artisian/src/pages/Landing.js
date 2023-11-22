@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import AboutUs from "../components/AboutUs";
 import ContactUs from "../components/ContactUs";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Landing() {
+  const [scroll, setScroll] = useState(false);
+  const changeState = () => {
+    if (window.scrollY >= 38) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+  window.addEventListener("scroll", changeState);
+
   return (
     <>
       <Navbar className="" />
@@ -15,7 +25,11 @@ export default function Landing() {
             src="/images/backg.png"
             alt="background-image"
           />
-          <div className=" absolute mt-[300px] ml-4 text-md sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-300">
+          <div
+            className={` absolute mt-[300px] ml-4 text-md sm:text-xl md:text-2xl lg:text-3xl font-bold ${
+              scroll ? "text-cyan-500 text-opacity-80 " : "text-indigo-300"
+            }`}
+          >
             <TypeAnimation
               sequence={[
                 "Well Hello There",

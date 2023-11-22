@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Accordion,
@@ -11,11 +11,21 @@ import { NavLink } from "react-router-dom";
 import { Stack } from "@chakra-ui/react";
 import { Link } from "react-scroll";
 import { useAuth } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Dashbar = () => {
   const [auth, setAuth] = useAuth();
+  const [home, setHome] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    // Check if the current location is "/"
+    if (location.pathname === "/") {
+      setHome(true);
+    } else {
+      setHome(false);
+    }
+  }, [location.pathname]); // Update when the location changes
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
@@ -44,10 +54,10 @@ const Dashbar = () => {
           <AccordionPanel fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack ml={2}>
               <NavLink
-                to="/"
+                to={home ? "/dashboard" : "/"}
                 className=" text-slate-400 hover:text-opacity-70 hover:cursor-pointer text-2xl"
               >
-                Home
+                {home ? "Dashboard" : "Home"}
               </NavLink>
               <NavLink
                 to="/profile"

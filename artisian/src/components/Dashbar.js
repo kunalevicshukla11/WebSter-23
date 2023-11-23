@@ -42,7 +42,7 @@ const Dashbar = () => {
       <Accordion defaultIndex={[0]} allowMultiple="true" allowToggle>
         <AccordionItem mr={50} pb={4}>
           <h2>
-            <AccordionButton _expanded={{ bg: "tomato", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "#00A3C4", color: "white" }}>
               <Box flex="1" textAlign="left" ml={4}>
                 <NavLink className="text-2xl" to="">
                   Links
@@ -53,10 +53,7 @@ const Dashbar = () => {
           </h2>
           <AccordionPanel fontWeight={"extrabold"} fontSize={20} pb={4}>
             <Stack ml={2}>
-              <NavLink
-                to={home ? "/dashboard" : "/"}
-                className=" text-slate-400 hover:text-opacity-70 hover:cursor-pointer text-2xl"
-              >
+              <NavLink className=" text-slate-400 hover:text-opacity-70 hover:cursor-pointer text-2xl">
                 {home ? "Dashboard" : "Home"}
               </NavLink>
               <NavLink
@@ -91,7 +88,7 @@ const Dashbar = () => {
 
         <AccordionItem mr={50} pb={4}>
           <h2>
-            <AccordionButton _expanded={{ bg: "tomato", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "#00A3C4", color: "white" }}>
               <Box flex="1" textAlign="left">
                 <NavLink className="text-2xl" to="">
                   Settings

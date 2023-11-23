@@ -172,11 +172,11 @@ export default function Navbar() {
               </li>
             </>
           ) : (
-            <div className="">
-              <li className="absolute">
+            <div className="flex w-[300px] mr-36  gap-8 -mt-2">
+              <li className=" max-w-fit">
                 <ProfileDropDown />
               </li>
-              <li className="absolute">
+              <li className=" max-w-fit ">
                 <UserSettings />
               </li>
             </div>

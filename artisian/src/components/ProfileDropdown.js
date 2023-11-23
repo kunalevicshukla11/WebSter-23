@@ -38,17 +38,17 @@ const ProfileDropDown = () => {
   window.addEventListener("scroll", changeState);
 
   return (
-    <div className="w-fit -ml-[300px]  -mt-6   flex items-center justify-center">
+    <div className="w-fit    flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className={`flex items-center gap-2 px-2 mr-4 py-2 rounded-md ${
+          className={`flex items-center gap-2 px-5 mr-4 py-2 rounded-md ${
             scroll
               ? "bg-yellow-500 hover:bg-yellow-600 text-black border-black border-2   "
               : "bg-indigo-500 text-indigo-50 hover:bg-indigo-800"
           } transition-colors`}
         >
-          <span className="font-medium px-2 text-lg">{displayName}</span>
+          <span className="font-medium  text-lg">{displayName}</span>
           <motion.span
             animate={open ? "open" : "closed"}
             variants={iconVariants}

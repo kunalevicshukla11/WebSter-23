@@ -8,6 +8,7 @@ import { IoSettings } from "react-icons/io5";
 import { IoMdContacts } from "react-icons/io";
 import { FcAbout } from "react-icons/fc";
 import { AiOutlineHome } from "react-icons/ai";
+import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-scroll";
 const UserSettings = () => {
   const [open, setOpen] = useState(false);
@@ -17,7 +18,6 @@ const UserSettings = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if the current location is "/"
     if (location.pathname === "/") {
       setHome(true);
     } else {
@@ -36,11 +36,10 @@ const UserSettings = () => {
   };
 
   const handleEdit = () => {
-    navigate("/profile"); // Navigate to "/profile"
+    navigate("/profile");
     setOpen(false);
   };
   const handleHome = () => {
-    // Check if already on "Home", navigate to "/dashboard"
     if (home) {
       navigate("/dashboard");
     } else {
@@ -68,11 +67,11 @@ const UserSettings = () => {
   window.addEventListener("scroll", changeState);
 
   return (
-    <div className="w-fit  -ml-[135px]  -mt-6 flex items-center justify-center">
+    <div className="w-fit  flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className={`flex items-center gap-2 px-3 py-2 rounded-md  ${
+          className={`flex items-center gap-2 px-5 py-2 rounded-md  ${
             scroll
               ? "bg-yellow-500 hover:bg-yellow-600   text-black  border-black border-2 "
               : "bg-indigo-500 text-indigo-50 hover:bg-indigo-800"
@@ -102,7 +101,7 @@ const UserSettings = () => {
           />
           <Option
             setOpen={setOpen}
-            Icon={AiOutlineHome}
+            Icon={home ? RxDashboard : AiOutlineHome}
             onClick={handleHome}
             text={home ? "Dashboard" : "Home"}
             scroll={scroll}

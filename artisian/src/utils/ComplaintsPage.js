@@ -70,7 +70,8 @@ const ComplaintsPage = (props) => {
             style={{
               marginLeft: "10px",
               marginRight: "10px",
-              backgroundColor: "#8f4c04",
+              backgroundColor: "yellowgreen",
+              color: "black",
             }}
           >
             Mess Menu
@@ -79,7 +80,7 @@ const ComplaintsPage = (props) => {
           <button
             type="button"
             className="btn delete-btn"
-            style={{ backgroundColor: "#f5a6bd" }}
+            style={{ backgroundColor: "rebeccapurple" }}
             onClick={handleClick}
           >
             Logout
@@ -94,7 +95,7 @@ const ComplaintsPage = (props) => {
       <div>
         <div
           style={{
-            backgroundColor: "#014f59",
+            backgroundColor: "ActiveCaption",
             height: "55px",
           }}
         >
@@ -123,8 +124,9 @@ const ComplaintsPage = (props) => {
             style={{
               marginLeft: "10px",
               marginRight: "10px",
-              backgroundColor: "#8f4c04",
+              backgroundColor: "yellowgreen",
               marginTop: "8px",
+              color: "black",
             }}
           >
             Mess Menu
@@ -133,7 +135,7 @@ const ComplaintsPage = (props) => {
           <button
             type="button"
             className="btn delete-btn"
-            style={{ backgroundColor: "#f5a6bd" }}
+            style={{ backgroundColor: "rebeccapurple" }}
             onClick={handleClick}
           >
             Logout

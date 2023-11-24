@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const StudentSchema = new mongoose.Schema(
   {
@@ -11,10 +12,15 @@ const StudentSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      validate: {
+        validator: validator.isEmail,
+        message: "Please provide a valid email",
+      },
     },
     password: {
       type: String,
       required: true,
+      minlength: 6,
     },
     branch: {
       type: String,

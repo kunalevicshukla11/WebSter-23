@@ -37,6 +37,7 @@ const Register = () => {
       }
     } catch (error) {
       const msg = error?.response?.data?.message;
+      console.log(error);
       toast({
         title: `${msg}`,
         description: "Error",

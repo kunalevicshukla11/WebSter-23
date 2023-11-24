@@ -2,7 +2,7 @@
 
 A Web Application which we completed during the CodeSangam'23 
 
-Features which we implemented are as follows : 
+⭐Features which we implemented are as follows : 
 
 -Login/Register and Logout for different users namely ( Student , Warden , Accountant , Student Representative ) along with authentication. 
 -User Profile page for all different users .
@@ -17,19 +17,19 @@ Features which we implemented are as follows :
 -Warden can Resolve the complaints sent by students .
 
 -Accountant can Add expenses about the hostel in the portal .
--Accountant can also get detailed analysis for the expenses or income using charts/graphs (Table and chart data for Weekly , Monthly and Yearly) . 
+-Accountant can also get detailed analysis for the expenses or income using charts/graphs (Table and chart data for Weekly , Monthly andYearly) . 
 -Accountant can also track on the money spent for items .
 
 
-Technologies Used : 
+⭐Technologies Used : 
 
-Front-End : JavaScript , ReactJS , CSS , Tailwind CSS
-Back-End :ExpressJS , NodeJs
-Database :MongoDB
-Developer tools : npm , git
+-Front-End : JavaScript , ReactJS , CSS , Tailwind CSS
+-Back-End :ExpressJS , NodeJs
+-Database :MongoDB
+-Developer tools : npm , git
 
 
-To test it on your device : 
+⭐To test it on your device : 
 
  You should have NodeJs and mongodb already. 
 

@@ -9,7 +9,7 @@ module.exports = {
 
       md: "768px",
       // => @media (min-width: 768px) { ... }
-
+      b: "869px",
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
@@ -21,6 +21,8 @@ module.exports = {
 
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
+
+      "3xl": "1600px",
     },
   },
   plugins: [],

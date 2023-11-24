@@ -14,6 +14,7 @@ const ExpenseUtils = ({ HostelName }) => {
   const [allTransactions, setAllTransactions] = useState([]);
   const [isTable, setIsTable] = useState(1);
   const toast = useToast();
+  const [time, setTime] = useState(0);
 
   //getting form data..
   const [title, setTitle] = useState();
@@ -132,14 +133,17 @@ const ExpenseUtils = ({ HostelName }) => {
 
   const handleWeelyExpense = () => {
     setTransaction(WeeklyTransaction);
+    setTime(7);
   };
 
   const handleMonthlyExpense = () => {
     setTransaction(MonthlyTransaction);
+    setTime(30);
   };
 
   const handleYearlyExpense = () => {
     setTransaction(YearlyTransaction);
+    setTime(0);
   };
   const handleAllExpense = () => {
     setTransaction(allTransactions);
@@ -252,7 +256,7 @@ const ExpenseUtils = ({ HostelName }) => {
           </div>
         ) : (
           <>
-            <ChartData />
+            <ChartData data={transaction} time={time} />
           </>
         )}
       </div>

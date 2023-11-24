@@ -78,13 +78,15 @@ const ContactUs = () => {
         />
         <div className="absolute inset-0 flex flex-col ">
           <div className="flex justify-evenly">
-            <p className="left-0 absolute  font-bold ml-4 w-[320px] mt-36 text-white text-5xl">
+            <p className="left-0 absolute  font-bold ml-4 w-[130px] sm:w-[150px] md:w-[250px]  b:w-[500px] a:w-[320px] mt-60 md:mt-72 a:mt-36 text-white text-[25px] md:text-4xl b:text-5xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt
             </p>
-            <div className="mt-[100px]">
-              <p className=" text-white font-bold text-6xl">We work for you</p>
-              <div className="flex mt-4 w-[550px] ml-[3px]  text-3xl text-white font-bold font-sans mx-auto">
+            <div className=" pl-24 sm:pl-0 mt-[100px]">
+              <p className=" text-white pl-16  sm:pl-0 font-bold text-4xl sm:text-6xl">
+                We work for you
+              </p>
+              <div className="flex mt-4  sm:w-[550px] -ml-8 sm:ml-[3px]  text-3xl text-white font-bold font-sans mx-auto">
                 Follow Us :
                 <div className="flex -mt-[1px] ml-6 opacity-50 gap-4">
                   <FaInstagram
@@ -154,13 +156,23 @@ const ContactUs = () => {
           <div className="self-end mr-4   items-center justify-center">
             <Contact className=" " />
           </div>
-          <div className="flex justify-evenly bg-zinc-950  pt-3 text-white font-mono text-md xl:text-2xl mt-12 ">
-            <p className=" text-white font-mono font-bold cursor-pointer  hover:opacity-75">
-              Copyright © 2023 Your Company Name. All Rights Reserved
-            </p>
-            <p className="cursor-pointer hover:opacity-75 ">Terms of Service</p>
-            <p className="cursor-pointer hover:opacity-75 ">Privacy Policy</p>
-            <p className="cursor-pointer hover:opacity-75 ">Cookies</p>
+          <div className="flex justify-around bg-zinc-950  pt-3 text-white font-mono text-lg a:text-xl xl:text-2xl mt-12 ">
+            <div className="b:flex b:gap-10 pr-2">
+              <p className=" text-white pl-4 lg:pr-12 2xl:pr-24 3xl:pr-36 font-mono font-bold cursor-pointer  hover:opacity-75">
+                Copyright © 2023 Your Company Name. All Rights Reserved
+              </p>
+              <p className="cursor-pointer pl-4 hover:opacity-75  b:mr-8 xl:pr-14">
+                Terms of Service
+              </p>
+            </div>
+            <div className="b:flex b:gap-10">
+              <p className="cursor-pointer hover:opacity-75 xl:pr-32 ">
+                Privacy Policy
+              </p>
+              <p className="cursor-pointer hover:opacity-75 xl:pr-4 ">
+                Cookies
+              </p>
+            </div>
           </div>
         </div>
       </div>

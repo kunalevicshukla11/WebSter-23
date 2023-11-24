@@ -4,6 +4,9 @@ import { FaSuitcase, FaEnvelope } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
 import { useAuth } from "../context/userContext";
 import { TiUser } from "react-icons/ti";
+import { FaRegBuilding } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { TbListNumbers } from "react-icons/tb";
 const UserProfileCard = () => {
   const [auth] = useAuth(); // I removed setAuth as it seems you are not using it
 
@@ -74,7 +77,7 @@ const UserProfileCard = () => {
               className="w-[400px] h-[10px]  mt-12 mb-12 pl-2"
               spacing={2}
             >
-              <FaSuitcase size={24} />
+              <FaSuitcase className="ml-1" size={30} />
               <Text
                 className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-6 "
                 fontSize="3xl"
@@ -93,19 +96,73 @@ const UserProfileCard = () => {
                   : ""}{" "}
               </Text>
             </HStack>
-            <HStack className="w-[340px] h-[2px]  mb-12" spacing={3}>
-              <GiTreeBranch size="28px" />
-              <Text
-                className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-5"
-                fontWeight="extrabold"
-                _dark={{ color: "gray.800" }}
-                fontSize="3xl"
-              >
-                {auth?.user?.branch}
-              </Text>
-            </HStack>
-            <HStack className="w-[340px] h-[10px] pl-2" spacing={3}>
-              <FaEnvelope size={20} />
+            {auth?.user?.role === 2 && (
+              <HStack className="w-[340px] h-[2px]  mb-12" spacing={3}>
+                <GiTreeBranch size="28px" className="ml-3" />
+                <Text
+                  className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="3xl"
+                >
+                  {auth?.user?.branch}
+                </Text>
+              </HStack>
+            )}
+            {auth?.user?.role === 1 && (
+              <HStack className="w-[340px] h-[2px]  mb-12" spacing={3}>
+                <FaKey className="absolute ml-3 -mt-1" size="30px" />
+                <Text
+                  className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 pl-14 px-2 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="3xl"
+                >
+                  Hostel ID: {auth?.user?.HostelID}
+                </Text>
+              </HStack>
+            )}
+            {auth?.user?.role === 1 && (
+              <HStack className="w-[340px] h-[2px]  mb-12" spacing={3}>
+                <FaRegBuilding className="absolute ml-2  mt-1" size="35px" />
+                <Text
+                  className="hover:bg-gray-700 ml-12 px-2  hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="3xl"
+                >
+                  Hostel Name: {auth?.user?.HostelName}
+                </Text>
+              </HStack>
+            )}
+            {auth?.user?.role === 3 && (
+              <HStack className="w-[340px] h-[2px]  mb-12" spacing={3}>
+                <FaKey className="absolute ml-3 -mt-1" size="30px" />
+                <Text
+                  className="hover:bg-gray-700 ml-12 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="3xl"
+                >
+                  Hostel ID: {auth?.user?.HostelID}
+                </Text>
+              </HStack>
+            )}
+            {auth?.user?.role === 3 && (
+              <HStack className="w-[340px] h-[2px]  mb-12">
+                <FaRegBuilding className="absolute ml-2  mt-1" size="35px" />
+                <Text
+                  className="hover:bg-gray-700 ml-12 px-2  hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50   mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="3xl"
+                >
+                  Hostel Name: {auth?.user?.HostelName}
+                </Text>
+              </HStack>
+            )}
+            <HStack className="w-[340px] h-[10px] pl-3" spacing={3}>
+              <FaEnvelope size={30} />
               <Text
                 className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2"
                 marginTop="20px"
@@ -116,6 +173,34 @@ const UserProfileCard = () => {
                 {email}
               </Text>
             </HStack>
+            {auth?.user?.role === 4 && (
+              <HStack className="w-[340px] h-[2px] mt-10 pl-14" spacing={3}>
+                <TbListNumbers size={30} className="-ml-[42px]" />
+
+                <Text
+                  className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="22px"
+                >
+                  Registration No: {auth?.user?.registrationNo}
+                </Text>
+              </HStack>
+            )}
+            {auth?.user?.role === 2 && (
+              <HStack className="w-[340px] h-[2px] mt-10 pl-14" spacing={3}>
+                <TbListNumbers size={30} className="-ml-[42px]" />
+
+                <Text
+                  className="hover:bg-gray-700 hover:cursor-pointer hover:border-black hover:border-2 rounded-lg hover:bg-opacity-50 px-2 mt-5"
+                  fontWeight="extrabold"
+                  _dark={{ color: "gray.800" }}
+                  fontSize="22px"
+                >
+                  Registration No: {auth?.user?.registrationNo}
+                </Text>
+              </HStack>
+            )}
           </Box>
         </div>
       </Center>

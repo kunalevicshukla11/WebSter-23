@@ -23,7 +23,7 @@ A Web Application which we completed during the CodeSangam'23
 
 ⭐Technologies Used : 
 
- - Front-End : JavaScript , ReactJS , CSS , Tailwind CSS
+ - Front-End : JavaScript , ReactJS , CSS , Tailwind CSS and Pre-Built Components from Chakra UI , hover.dev and Choc UI
  - Back-End :ExpressJS , NodeJs
  - Database :MongoDB
  - Developer tools : npm , git

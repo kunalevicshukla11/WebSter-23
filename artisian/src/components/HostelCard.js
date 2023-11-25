@@ -23,16 +23,16 @@ const HostelCard = ({ title, content }) => {
               key={d.name}
               className=" h-[480px] bg-zinc-950 bg-opacity-50 border-black border-4 text-black rounded-xl"
             >
-              <div className="h-56  flex justify-center items-center rounded-t-xl pt-6">
+              <div className="h-56  flex justify-center items-center rounded-t-xl  lg:pt-6">
                 <img
                   src={d.img}
                   alt=""
-                  className="h-[250px] w-[300px] object-bottom rounded-3xl rounded-t-none border-4 border-black "
+                  className="h-[200px]  lg:h-[250px] w-[200px] lg:w-[300px] object-bottom rounded-3xl rounded-t-none border-4 border-black "
                 />
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 p-4">
-                <p className="text-[28px] pt-3 text-orange-400 font-mono font-semibold">
+              <div className="flex flex-col items-center justify-center gap-4 pt-0 lg:p-4">
+                <p className="text-[20px]  xl:text-[28px] pt-[-20px] lg:pt-3 text-orange-400 font-mono font-semibold">
                   {d.name}
                 </p>
 

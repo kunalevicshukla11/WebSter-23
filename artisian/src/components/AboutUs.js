@@ -7,20 +7,20 @@ const AboutUs = () => {
     <>
       <div className="sm:w-full h-full -z-10" id="about">
         <div className=" mt-16 sm:mt-0  sm:w-[620px]  md:w-full  absolute flex flex-col">
-          <h1 className="ml-4 text-[40px] mt-3 pl-2 pr-2 font-mono max-w-fit bg-cyan-700 rounded-md text-gray-900">
+          <h1 className="ml-4 text-[35px]  sm:text-[40px] mt-3 pl-2 pr-2 font-mono max-w-fit bg-cyan-700 rounded-md text-gray-900">
             Who we are
           </h1>
 
-          <h1 className="ml-3 text-[30px] sm:text-[40px] -mt-4 max-w-fit  pl-3 text-gray-400 font-mono">
+          <h1 className="ml-3 text-[35px] sm:text-[40px] -mt-4 max-w-fit  pl-3 text-gray-400 font-mono">
             We're a Team of 3
           </h1>
-          <p className=" text-[30px] sm:text-[40px] -mt-4 pt-3 ml-3   h-[70px] max-w-fit font-mono pl-2 text-gray-400">
+          <p className="w-[350px]  sm:w-full text-[30px] sm:text-[40px] -mt-8 sm:-mt-4  md:-mt-4 pt-3 ml-3   h-[70px]  font-mono pl-2 text-gray-400">
             Designers,thinkers & collaborators
           </p>
-          <h1 className="ml-[160px] mb-6  mt-14 md:mt-0  xl:ml-[10px]  text-[40px] xl:mb-2 font-mono text-6xl max-w-fit text-gray-300 border-b-2 border-gray-400">
+          <h1 className="ml-[180px] sm:ml-[160px] mb-6  mt-20 md:mt-0  xl:ml-[10px]  text-[40px] xl:mb-2 font-mono text-6xl max-w-fit text-gray-300 border-b-2 border-gray-400">
             our team
           </h1>
-          <div className="flex xl:flex-col z-10  ml-[10px] gap-16 sm:gap-24 xl:gap-4 max-w-fit ">
+          <div className="flex xl:flex-col z-10 ml-[20px] sm:ml-[10px] gap-16 sm:gap-24 xl:gap-4 max-w-fit ">
             <div className="flex ml-8 xl:ml-0 w-24 h-24 bg-gray-300 rounded-sm overflow-hidden ">
               <HiUser
                 alt="Team Member 1"
@@ -48,7 +48,7 @@ const AboutUs = () => {
                 Aman
               </h1>
             </div>
-            <DrawOutlineButton className="relative text-2xl">
+            <DrawOutlineButton className="relative  text-2xl">
               Know more about us
             </DrawOutlineButton>
           </div>
@@ -60,7 +60,7 @@ const AboutUs = () => {
           alt="about us-image"
         />
         <HeroContainer>
-          <div className="gradient absolute -mt-[600px] md:-mt-[620px]  xl:-mt-[570px] ml-[80px] xl:-ml-[50px] "></div>
+          <div className="gradient absolute -mt-[560px] md:-mt-[620px]  xl:-mt-[570px] ml-[115px] md:ml-[80px] xl:-ml-[50px] "></div>
         </HeroContainer>
       </div>
     </>

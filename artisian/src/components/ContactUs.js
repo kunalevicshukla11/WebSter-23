@@ -78,7 +78,7 @@ const ContactUs = () => {
         />
         <div className="absolute inset-0 flex flex-col ">
           <div className="flex justify-evenly">
-            <p className="left-0 absolute  font-bold ml-4 w-[130px] sm:w-[150px] md:w-[250px]  b:w-[500px] a:w-[320px] mt-60 md:mt-72 a:mt-36 text-white text-[25px] md:text-4xl b:text-5xl">
+            <p className="  left-0 absolute  font-bold ml-4 w-[130px] sm:w-[150px] md:w-[250px]  b:w-[500px] a:w-[320px] mt-60 md:mt-72 a:mt-36 text-white text-[25px] md:text-4xl b:text-5xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt
             </p>
